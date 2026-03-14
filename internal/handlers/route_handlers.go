@@ -1,4 +1,4 @@
-package config
+package handlers
 
 import (
 	"database/sql"
@@ -31,10 +31,6 @@ func CreateNewService(service AsciiServices) *Handler {
 
 func (s *Handler) LoginPageHandler(w http.ResponseWriter, r *http.Request) {
 	w.Write([]byte("Login connection set!"))
-}
-
-func (s *Handler) RegisterPageHandler(w http.ResponseWriter, r *http.Request) {
-	w.Write([]byte("Register connection set!"))
 }
 
 func (s *Handler) HomePageHandler(w http.ResponseWriter, r *http.Request) {
