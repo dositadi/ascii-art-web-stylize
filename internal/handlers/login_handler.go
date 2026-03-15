@@ -16,3 +16,7 @@ func (s *Handler) LoginPageHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 }
+
+func (s *Handler) LoginHandler(w http.ResponseWriter, r *http.Request) {
+	w.Write([]byte("Login connection set!"))
+}
