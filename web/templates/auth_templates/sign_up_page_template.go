@@ -23,12 +23,15 @@ func SignUpPageTemplate(w http.ResponseWriter) *m.Error {
 		PasswordKey  string
 		EmailKey     string
 		PostUrl      string
+		BackURL      string
 		LoginPageUrl string
 	}{
-		NameKey:     "name",
-		PasswordKey: "password",
-		EmailKey:    "email",
-		PostUrl:     h.LOGIN_ROUTE,
+		NameKey:      "name",
+		PasswordKey:  "password",
+		EmailKey:     "email",
+		PostUrl:      h.SIGNUP_ROUTE,
+		BackURL:      h.WELCOME_ROUTE,
+		LoginPageUrl: h.LOGIN_ROUTE,
 	}
 
 	if err2 := temp.Execute(w, signupPageDetail); err2 != nil {

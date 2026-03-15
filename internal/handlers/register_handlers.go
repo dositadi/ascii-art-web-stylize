@@ -5,6 +5,7 @@ import (
 
 	m "acad.learn2earn.ng/git/dositadi/ascii-art-web-stylize/pkg/models"
 	h "acad.learn2earn.ng/git/dositadi/ascii-art-web-stylize/pkg/utils"
+	at "acad.learn2earn.ng/git/dositadi/ascii-art-web-stylize/web/templates/auth_templates"
 	"github.com/google/uuid"
 )
 
@@ -60,5 +61,10 @@ func (s *Handler) RegisterHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func (s *Handler) RegisterPageHandler(w http.ResponseWriter, r *http.Request) {
-
+	err := at.SignUpPageTemplate(w)
+	if err != nil {
+		err := h.ErrorToJson(m.Error{Error: err.Error, Details: err.Details, Code: err.Code})
+		h.ErrorResponse(w, err, http.StatusBadRequest)
+		return
+	}
 }

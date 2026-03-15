@@ -4,6 +4,10 @@ const (
 	SERVER_ERR        = "Internal Server Error."
 	SERVER_ERR_DETAIL = "An nternal server error occurred."
 	SERVER_ERR_CODE   = "500"
+
+	NOT_FOUND_ERR    = "Not found"
+	NOT_FOUND_DETAIL = "Resource not found."
+	NOT_FOUND_CODE   = "400"
 )
 
 // User registration errors
