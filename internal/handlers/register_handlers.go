@@ -1,62 +1,70 @@
 package handlers
 
 import (
+	"fmt"
 	"net/http"
+	"strings"
 
 	m "acad.learn2earn.ng/git/dositadi/ascii-art-web-stylize/pkg/models"
 	h "acad.learn2earn.ng/git/dositadi/ascii-art-web-stylize/pkg/utils"
 	at "acad.learn2earn.ng/git/dositadi/ascii-art-web-stylize/web/templates/auth_templates"
-	"github.com/google/uuid"
 )
 
-/*
-Id        string `json:"id"`
-	Name      string `json:"name"`
-	Email     string `json:"email"`
-	Password  string `json:"password"`
-	CreatedAt string `json:"created_at"`
-*/
-
 func (s *Handler) RegisterHandler(w http.ResponseWriter, r *http.Request) {
-	name := r.PostFormValue("name")
-	email := r.PostFormValue("email")
-	password := r.PostFormValue("password")
-	id := uuid.NewString()
+	first_name := strings.TrimSpace(r.FormValue("name"))
+	last_name := r.FormValue("last_name")
+	user_email := strings.TrimSpace(r.FormValue("email"))
+	user_password := strings.TrimSpace(r.FormValue("password"))
 
-	if name == "" {
-		err := h.ErrorToJson(m.Error{Error: h.EMPTY_NAME_FIELD, Details: h.EMPTY_NAME_FIELD_DETAIL, Code: h.EMPTY_NAME_FIELD_CODE})
-		h.ErrorResponse(w, err, http.StatusBadRequest)
+	user_name := first_name + " " + last_name
+
+	fmt.Println(user_email)
+	fmt.Printf("Value: %q | Length: %d\n", user_name, len(user_name))
+
+	if user_email == "" {
+		err := m.Error{Error: h.EMPTY_EMAIL_FIELD, Details: h.EMPTY_EMAIL_FIELD_DETAIL, Code: h.EMPTY_EMAIL_FIELD_CODE}
+		h.ErrorResponse(w, h.ErrorToJson(err), http.StatusBadRequest)
 		return
-	} else if len(password) < 8 || password == "" {
-		err := h.ErrorToJson(m.Error{Error: h.EMPTY_PASSWORD_FIELD, Details: h.EMPTY_PASSWORD_FIELD_DETAIL, Code: h.EMPTY_PASSWORD_FIELD_CODE})
-		h.ErrorResponse(w, err, http.StatusBadRequest)
+	}
+	if user_name == "" {
+		err := m.Error{Error: h.EMPTY_NAME_FIELD, Details: h.EMPTY_NAME_FIELD_DETAIL, Code: h.EMPTY_NAME_FIELD_CODE}
+		h.ErrorResponse(w, h.ErrorToJson(err), http.StatusBadRequest)
 		return
-	} else if email == "" {
-		err := h.ErrorToJson(m.Error{Error: h.EMPTY_EMAIL_FIELD, Details: h.EMPTY_EMAIL_FIELD_DETAIL, Code: h.EMPTY_EMAIL_FIELD_CODE})
-		h.ErrorResponse(w, err, http.StatusBadRequest)
+	}
+	if len(user_password) < 8 || user_password == "" {
+		err := m.Error{Error: h.EMPTY_PASSWORD_FIELD, Details: h.EMPTY_PASSWORD_FIELD_DETAIL, Code: h.EMPTY_PASSWORD_FIELD_CODE}
+		h.ErrorResponse(w, h.ErrorToJson(err), http.StatusBadRequest)
 		return
-	} else if !h.IsEmail(email) {
-		err := h.ErrorToJson(m.Error{Error: h.BAD_EMAIL_FORMAT, Details: h.BAD_EMAIL_FORMAT_DETAIL, Code: h.BAD_EMAIL_FORMAT_CODE})
-		h.ErrorResponse(w, err, http.StatusBadRequest)
+	}
+	if !h.IsEmail(user_email) {
+		err := m.Error{Error: h.BAD_EMAIL_FORMAT, Details: h.BAD_EMAIL_FORMAT_DETAIL, Code: h.BAD_EMAIL_FORMAT_CODE}
+		h.ErrorResponse(w, h.ErrorToJson(err), http.StatusBadRequest)
 		return
 	}
 
+	fmt.Println(user_name)
+
 	user := m.User{
-		Id:       id,
-		Name:     name,
-		Email:    email,
-		Password: password,
+		Name:  user_name,
+		Email: user_email,
 	}
 
 	ctx := r.Context()
 
-	err := s.Service.RegisterUser(ctx, user)
-	if err != nil {
-
+	err2 := s.Service.RegisterUser(ctx, &user, user_password)
+	if err2 != nil {
+		if err2.Error == h.CONFLICT_ERR {
+			err := h.ErrorToJson(*err2)
+			h.ErrorResponse(w, err, http.StatusConflict)
+		} else if err2.Error == h.SERVER_ERR {
+			err := h.ErrorToJson(*err2)
+			h.ErrorResponse(w, err, http.StatusInternalServerError)
+		} else {
+			err := h.ErrorToJson(*err2)
+			h.ErrorResponse(w, err, http.StatusBadRequest)
+		}
 	}
 
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(http.StatusCreated)
 	http.Redirect(w, r, "/auth/login", http.StatusSeeOther)
 }
 

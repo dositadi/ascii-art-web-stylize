@@ -1,5 +1,6 @@
 package utils
 
+// Error code strings
 const (
 	SERVER_ERR        = "Internal Server Error."
 	SERVER_ERR_DETAIL = "An nternal server error occurred."
@@ -7,7 +8,15 @@ const (
 
 	NOT_FOUND_ERR    = "Not found"
 	NOT_FOUND_DETAIL = "Resource not found."
-	NOT_FOUND_CODE   = "400"
+	NOT_FOUND_CODE   = "404"
+
+	UNAUTHORIZED_ERR        = "Unauthorized Error."
+	UNAUTHORIZED_ERR_DETAIL = "You are denied access."
+	UNAUTHORIZED_ERR_CODE   = "401"
+
+	CONFLICT_ERR        = "Conflict Error."
+	CONFLICT_ERR_DETAIL = "Resource already exists"
+	CONFLICT_ERR_CODE   = "409"
 )
 
 // User registration errors
@@ -46,4 +55,9 @@ const (
 const (
 	STYLES_PATH_PATTERN = "/web/static/styles/"
 	STYLES_PATH         = "web/static/styles"
+)
+
+const (
+	INSERT_INTO_USERS = "INSERT INTO users (id,name,email,hashed_password) VALUES (?,?,?,?)"
+	CHECK_USER_EXISTS = "SELECT EXISTS (SELECT 1 FROM users WHERE email=?)"
 )

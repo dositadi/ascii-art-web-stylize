@@ -2,22 +2,21 @@ package config
 
 import (
 	"database/sql"
-	"fmt"
 	"log"
 	"net/http"
 	"time"
 
 	h_ "acad.learn2earn.ng/git/dositadi/ascii-art-web-stylize/internal/handlers"
+	r "acad.learn2earn.ng/git/dositadi/ascii-art-web-stylize/internal/repository"
+	s "acad.learn2earn.ng/git/dositadi/ascii-art-web-stylize/internal/services"
 	m "acad.learn2earn.ng/git/dositadi/ascii-art-web-stylize/pkg/models"
 	h "acad.learn2earn.ng/git/dositadi/ascii-art-web-stylize/pkg/utils"
-	"github.com/go-sql-driver/mysql"
 	_ "github.com/go-sql-driver/mysql"
 )
 
 type App struct {
-	DB             *sql.DB
-	Router         *http.ServeMux
-	ServiceHandler h_.Handler
+	DB     *sql.DB
+	Router *http.ServeMux
 }
 
 func (a *App) InitializeFileServers() {
@@ -29,20 +28,25 @@ func (a *App) InitializeFileServers() {
 func (a *App) InitializeRoutes() {
 	a.Router = http.NewServeMux()
 
+	dB := r.ConstructNewRepo(a.DB)
+	service := s.ConstructNewService(dB)
+	handler := h_.CreateNewService(service)
+
 	// Welcome Page
-	a.Router.HandleFunc("GET /", a.ServiceHandler.WelcomePageHandler)
+	a.Router.HandleFunc("GET /", handler.WelcomePageHandler)
 
 	// Auth route
-	a.Router.HandleFunc("GET /auth/login", a.ServiceHandler.LoginPageHandler)
-	a.Router.HandleFunc("POST /auth/login", a.ServiceHandler.LoginPageHandler)
-	a.Router.HandleFunc("POST /auth/register", a.ServiceHandler.RegisterHandler)
-	a.Router.HandleFunc("GET /auth/register", a.ServiceHandler.RegisterPageHandler)
+	a.Router.HandleFunc("GET /auth/login", handler.LoginPageHandler)
+	a.Router.HandleFunc("POST /auth/login", handler.LoginPageHandler)
+	
+	a.Router.HandleFunc("POST /auth/register", handler.RegisterHandler)
+	a.Router.HandleFunc("GET /auth/register", handler.RegisterPageHandler)
 
 	// Pages route
-	a.Router.HandleFunc("GET /ascii-art/learn-more", a.ServiceHandler.LearnMorePageHandler)
-	a.Router.HandleFunc("GET /ascii-art/about-us", a.ServiceHandler.AboutPageHandler)
+	a.Router.HandleFunc("GET /ascii-art/learn-more", handler.LearnMorePageHandler)
+	a.Router.HandleFunc("GET /ascii-art/about-us", handler.AboutPageHandler)
 
-	a.Router.HandleFunc("GET /health", a.ServiceHandler.HealthCheckHandler)
+	a.Router.HandleFunc("GET /health", handler.HealthCheckHandler)
 }
 
 func (a *App) InitializeDatabase() *m.Error {
@@ -51,16 +55,7 @@ func (a *App) InitializeDatabase() *m.Error {
 
 	var err error
 
-	mysqlConfig := mysql.NewConfig()
-	mysqlConfig.Addr = config.Addr
-	mysqlConfig.DBName = config.DBName
-	mysqlConfig.Passwd = config.Password
-	mysqlConfig.User = config.User
-	mysqlConfig.Net = "tcp"
-
-	fmt.Println(mysqlConfig.Addr, mysqlConfig.DBName, mysqlConfig.Passwd, mysqlConfig.User)
-
-	a.DB, err = sql.Open("mysql", mysqlConfig.FormatDSN())
+	a.DB, err = sql.Open("mysql", config.DBUrl)
 	if err != nil {
 		return &m.Error{
 			Error:   h.SERVER_ERR,
@@ -68,8 +63,6 @@ func (a *App) InitializeDatabase() *m.Error {
 			Code:    h.SERVER_ERR_CODE,
 		}
 	}
-
-	a.ServiceHandler.DB = a.DB
 
 	a.DB.SetMaxOpenConns(10)
 	a.DB.SetMaxIdleConns(5)

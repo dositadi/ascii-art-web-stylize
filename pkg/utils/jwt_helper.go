@@ -1,6 +1,7 @@
 package utils
 
 import (
+	"os"
 	"time"
 
 	m "acad.learn2earn.ng/git/dositadi/ascii-art-web-stylize/pkg/models"
@@ -8,16 +9,41 @@ import (
 )
 
 func GenerateAccessJWT(user m.ActiveUser) (string, *m.Error) {
-	claims := jwt.NewWithClaims(jwt.SigningMethodHS256, jwt.RegisteredClaims{
+	secretKey := os.Getenv("ASCII_JWT_SECRET_KEY")
+
+	user.RegisteredClaims = jwt.RegisteredClaims{
 		ExpiresAt: jwt.NewNumericDate(time.Now().Add(time.Duration(5 * time.Hour))),
-	})
-
-	//claims.Method.Sign("", user)
-
-	jwt, err := claims.SignedString("")
-	if err != nil {
-		return "", nil
 	}
 
+	token := jwt.NewWithClaims(jwt.SigningMethodHS256, user)
+
+	jwt, err := token.SignedString(secretKey)
+	if err != nil {
+		return "", &m.Error{
+			Error:   UNAUTHORIZED_ERR,
+			Details: UNAUTHORIZED_ERR_DETAIL,
+			Code:    UNAUTHORIZED_ERR_CODE,
+		}
+	}
+	return jwt, nil
+}
+
+func GenerateRefreshJWT(user m.ActiveUser) (string, *m.Error) {
+	secretKey := os.Getenv("ASCII_JWT_SECRET_KEY")
+
+	user.RegisteredClaims = jwt.RegisteredClaims{
+		ExpiresAt: jwt.NewNumericDate(time.Now().Add(time.Duration(168 * time.Hour))),
+	}
+
+	token := jwt.NewWithClaims(jwt.SigningMethodHS256, user)
+
+	jwt, err := token.SignedString(secretKey)
+	if err != nil {
+		return "", &m.Error{
+			Error:   UNAUTHORIZED_ERR,
+			Details: UNAUTHORIZED_ERR_DETAIL,
+			Code:    UNAUTHORIZED_ERR_CODE,
+		}
+	}
 	return jwt, nil
 }

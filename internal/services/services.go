@@ -1,15 +1,25 @@
 package services
 
 import (
-	r "acad.learn2earn.ng/git/dositadi/ascii-art-web-stylize/internal/repository"
+	"context"
+
+	m "acad.learn2earn.ng/git/dositadi/ascii-art-web-stylize/pkg/models"
 )
 
-type Service struct {
-	ServiceRepo r.ServiceRepo
+type Repo interface {
+	/* InsertAscii(ascii m.Ascii) *m.Error
+	GetAscii() ([]m.Ascii, *m.Error) */
+
+	InsertUser(ctx context.Context, user m.User) *m.Error
+	PingDB() *m.Error
 }
 
-func ConstructNewService(serviceRepo r.ServiceRepo) *Service {
+type Service struct {
+	Repository Repo
+}
+
+func ConstructNewService(repo Repo) *Service {
 	return &Service{
-		ServiceRepo: serviceRepo,
+		Repository: repo,
 	}
 }

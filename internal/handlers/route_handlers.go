@@ -2,8 +2,6 @@ package handlers
 
 import (
 	"context"
-	"database/sql"
-	"log"
 	"net/http"
 
 	m "acad.learn2earn.ng/git/dositadi/ascii-art-web-stylize/pkg/models"
@@ -20,16 +18,16 @@ type AsciiServices interface {
 	RenderSignupPage(w http.ResponseWriter) *m.Error
 	*/
 	// Auth Handlers
-	RegisterUser(ctx context.Context, user m.User) *m.Error
+	RegisterUser(ctx context.Context, user *m.User, password string) *m.Error
 	LoginUser(email, password string) *m.Error
+	CheckDBHealth() *m.Error
 
 	// App Service
-	TransformText(request m.Request) (string, *m.Error)
+	TransformText(request m.Ascii) (string, *m.Error)
 }
 
 type Handler struct {
 	Service AsciiServices
-	DB      *sql.DB
 }
 
 func CreateNewService(service AsciiServices) *Handler {
@@ -57,8 +55,10 @@ func (s *Handler) ServerErrorPageHandler(w http.ResponseWriter, r *http.Request)
 }
 
 func (s *Handler) HealthCheckHandler(w http.ResponseWriter, r *http.Request) {
-	if err := s.DB.Ping(); err != nil {
-		log.Fatal(err)
+	if err := s.Service.CheckDBHealth(); err != nil {
+		w.WriteHeader(http.StatusInternalServerError)
+		w.Write([]byte("Connection failed!."))
 	}
+	w.WriteHeader(http.StatusOK)
 	w.Write([]byte("Connection to Db is successful."))
 }
