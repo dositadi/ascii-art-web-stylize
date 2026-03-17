@@ -19,17 +19,8 @@ func HashPassword(password string) (string, *m.Error) {
 	return string(hashedPass), nil
 }
 
-func ComparePasswordAndHash(password string) *m.Error {
-	hashedPass, err := HashPassword(password)
-	if err != nil {
-		return &m.Error{
-			Error:   NOT_FOUND_ERR,
-			Details: NOT_FOUND_DETAIL,
-			Code:    NOT_FOUND_CODE,
-		}
-	}
-
-	if err2 := bcrypt.CompareHashAndPassword([]byte(hashedPass), []byte(password)); err2 != nil {
+func ComparePasswordAndHash(hashedPassword, password string) *m.Error {
+	if err2 := bcrypt.CompareHashAndPassword([]byte(hashedPassword), []byte(password)); err2 != nil {
 		return &m.Error{
 			Error:   NOT_FOUND_ERR,
 			Details: NOT_FOUND_DETAIL,

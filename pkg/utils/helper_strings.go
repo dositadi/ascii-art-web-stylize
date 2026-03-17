@@ -17,6 +17,10 @@ const (
 	CONFLICT_ERR        = "Conflict Error."
 	CONFLICT_ERR_DETAIL = "Resource already exists"
 	CONFLICT_ERR_CODE   = "409"
+
+	CONN_LOST_ERR        = "Connection lost."
+	CONN_LOST_ERR_DETAIL = "Connection has been lost."
+	CONN_LOST_ERR_CODE   = "500"
 )
 
 // User registration errors
@@ -57,7 +61,9 @@ const (
 	STYLES_PATH         = "web/static/styles"
 )
 
+// Repo Query statements
 const (
-	INSERT_INTO_USERS = "INSERT INTO users (id,name,email,hashed_password) VALUES (?,?,?,?)"
-	CHECK_USER_EXISTS = "SELECT EXISTS (SELECT 1 FROM users WHERE email=?)"
+	INSERT_INTO_USERS     = "INSERT INTO users (id,name,email,hashed_password) VALUES (?,?,?,?)"
+	CHECK_USER_EXISTS     = "SELECT EXISTS (SELECT 1 FROM users WHERE email=?)"
+	GET_HPASS_ID_AND_NAME = "SELECT id, name, hashed_password FROM users WHERE email=? LIMIT 1"
 )

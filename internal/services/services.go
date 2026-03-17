@@ -11,6 +11,7 @@ type Repo interface {
 	GetAscii() ([]m.Ascii, *m.Error) */
 
 	InsertUser(ctx context.Context, user m.User) *m.Error
+	GetHashedPasswordAndID(ctx context.Context, email string) (string, string, string, *m.Error)
 	PingDB() *m.Error
 }
 

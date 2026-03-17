@@ -18,5 +18,26 @@ func (s *Handler) LoginPageHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func (s *Handler) LoginHandler(w http.ResponseWriter, r *http.Request) {
-	w.Write([]byte("Login connection set!"))
+	email := r.FormValue("email")
+	password := r.FormValue("password")
+	ctx := r.Context()
+
+	activeUser, err := s.Service.LoginUser(ctx, email, password)
+	if err != nil {
+
+	}
+
+	refreshToken, err2 := h.GenerateRefreshJWT(activeUser)
+	if err2 != nil {
+
+	}
+
+	accessToken, err3 := h.GenerateAccessJWT(activeUser)
+	if err3 != nil {
+
+	}
+
+	http.SetCookie(w, &http.Cookie{Name: "refresh-jwt", Value: refreshToken, HttpOnly: true, Secure: true})
+	w.Write([]byte(accessToken))
+	http.Redirect(w, r, "/home", http.StatusSeeOther)
 }

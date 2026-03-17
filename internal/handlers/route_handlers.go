@@ -17,9 +17,10 @@ type AsciiServices interface {
 	RenderLoginPage(w http.ResponseWriter) *m.Error
 	RenderSignupPage(w http.ResponseWriter) *m.Error
 	*/
+
 	// Auth Handlers
-	RegisterUser(ctx context.Context, user *m.User, password string) *m.Error
-	LoginUser(email, password string) *m.Error
+	RegisterUser(ctx context.Context, name, email, password string) *m.Error
+	LoginUser(ctx context.Context, email, password string) (m.ActiveUser, *m.Error)
 	CheckDBHealth() *m.Error
 
 	// App Service
