@@ -25,6 +25,9 @@ func (a *App) InitializeFileServers() {
 	pagesCSSFileServer := http.FileServer(http.Dir(h.STYLES_PATH))
 	pattern := "GET " + h.STYLES_PATH_PATTERN
 	a.Router.Handle(pattern, http.StripPrefix(h.STYLES_PATH_PATTERN, pagesCSSFileServer))
+
+	webImageFileServer := http.FileServer(http.Dir("web/assets"))
+	a.Router.Handle("GET /web/assets/", http.StripPrefix("/web/assets/", webImageFileServer))
 }
 
 func (a *App) InitializeRoutes() {

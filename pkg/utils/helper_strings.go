@@ -53,7 +53,7 @@ const (
 	LOGIN_ROUTE   = "/auth/login"
 	SIGNUP_ROUTE  = "/auth/register"
 	WELCOME_ROUTE = "/"
-	ASCII_ROUTE = "/home/ascii"
+	ASCII_ROUTE   = "/home/ascii"
 )
 
 // Internal folder path
@@ -67,4 +67,10 @@ const (
 	INSERT_INTO_USERS     = "INSERT INTO users (id,name,email,hashed_password) VALUES (?,?,?,?)"
 	CHECK_USER_EXISTS     = "SELECT EXISTS (SELECT 1 FROM users WHERE email=?)"
 	GET_HPASS_ID_AND_NAME = "SELECT id, name, hashed_password FROM users WHERE email=? LIMIT 1"
+)
+
+// Ascii keys
+const (
+	TEXT_KEY   = "text"
+	BANNER_KEY = "banner"
 )

@@ -41,9 +41,7 @@
 </header>
 
 
-<!-- ════════════════════════════════════
-     HERO
-════════════════════════════════════ -->
+<!-- HERO -->
 <section class="hero">
 
   <!-- ASCII bg rows -->
@@ -66,7 +64,7 @@
 
   <div class="hero__inner">
 
-    <div class="hero__badge">asciiforge v1.0 — now live</div>
+    <div class="hero__badge">Ascii forge v1.0 — now live</div>
 
     <pre class="hero__wordmark"> █████╗ ███████╗ ██████╗██╗██╗    ███████╗ ██████╗ ██████╗  ██████╗ ███████╗
 ██╔══██╗██╔════╝██╔════╝██║██║    ██╔════╝██╔═══██╗██╔══██╗██╔════╝ ██╔════╝
@@ -80,11 +78,13 @@
     </h1>
 
     <p class="hero__body">
-      {{.HeroBody}}
+      ASCII (American Standard Code for Information Interchange) has been the backbone
+      of digital communication since 1963. ASCIIForge lets you harness that legacy —
+      transforming your words into stunning block art with a single click.
     </p>
 
     <div class="hero__cta">
-      <a href="signup.html" class="btn-cta">
+      <a href={{.AsciiPageUrl}} class="btn-cta">
         Get Started
         <span class="btn-cta__arrow">
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M7 3l4 4-4 4" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -160,9 +160,9 @@
         <div class="feature-card__icon">
           <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 10h12M4 6h12M4 14h7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
         </div>
-        <p class="feature-card__label">Styles</p>
+        <p class="feature-card__label">01 Styles</p>
         <h3 class="feature-card__title">6 Font Styles</h3>
-        <p class="feature-card__body">Block, Shadow, Slant, Thinkertoy, Digital and Standard — each with a distinct character and visual weight.</p>
+        <p class="feature-card__body">Block, Shadow, Slant, Banner, Digital and ASCII Double — each with a distinct character and visual weight.</p>
         <pre class="feature-card__preview">█▓▒░  ·  ╔═╗  ·  /\  ·  ###</pre>
       </div>
 
@@ -171,7 +171,7 @@
         <div class="feature-card__icon">
           <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="3" y="3" width="14" height="14" rx="3" stroke="currentColor" stroke-width="1.5"/><path d="M7 10h6M10 7v6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
         </div>
-        <p class="feature-card__label">Borders</p>
+        <p class="feature-card__label">02 Borders</p>
         <h3 class="feature-card__title">Border Styles</h3>
         <p class="feature-card__body">Frame your banner with Simple, Double-line, or Stars borders — or keep it clean with no border at all.</p>
         <pre class="feature-card__preview">╔═════╗  ·  +-----+  ·  *****</pre>
@@ -182,7 +182,7 @@
         <div class="feature-card__icon">
           <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 10h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M10 4v12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="10" cy="10" r="7" stroke="currentColor" stroke-width="1.5"/></svg>
         </div>
-        <p class="feature-card__label">Align</p>
+        <p class="feature-card__label">03 Align</p>
         <h3 class="feature-card__title">Alignment Control</h3>
         <p class="feature-card__body">Left, center, or right — align your output precisely for any terminal width or display context.</p>
         <pre class="feature-card__preview">  ← left   center →   right ↔</pre>
@@ -193,7 +193,7 @@
         <div class="feature-card__icon">
           <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M8 4H5a2 2 0 00-2 2v9a2 2 0 002 2h10a2 2 0 002-2v-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M17 3l-6 6M13 3h4v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
-        <p class="feature-card__label">Copy</p>
+        <p class="feature-card__label">04 Copy</p>
         <h3 class="feature-card__title">One-Click Copy</h3>
         <p class="feature-card__body">Copy your ASCII banner to clipboard instantly. Paste straight into a README, terminal, Discord, or anywhere else.</p>
         <pre class="feature-card__preview">[ Copy ]  →  ✓ Copied to clipboard</pre>
@@ -204,7 +204,7 @@
         <div class="feature-card__icon">
           <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 3v10M6 9l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 16h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
         </div>
-        <p class="feature-card__label">History</p>
+        <p class="feature-card__label">05 History</p>
         <h3 class="feature-card__title">Save &amp; Export</h3>
         <p class="feature-card__body">Every banner you generate can be saved to your personal history and exported as a plain text file for offline use.</p>
         <pre class="feature-card__preview">history[0..20]  →  .txt export</pre>
@@ -215,10 +215,10 @@
         <div class="feature-card__icon">
           <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="7" stroke="currentColor" stroke-width="1.5"/><path d="M10 7v3l2 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
-        <p class="feature-card__label">Preview</p>
+        <p class="feature-card__label">06 Preview</p>
         <h3 class="feature-card__title">Live Style Preview</h3>
         <p class="feature-card__body">Browse all font styles visually on the Styles page. Click any style to preview it with live text before you apply it.</p>
-        <pre class="feature-card__preview">[ Standard ] [ Shadow ] [ Thinkertoy ]</pre>
+        <pre class="feature-card__preview">[ Block ] [ Slant ] [ Digital ]</pre>
       </div>
 
     </div>
@@ -230,176 +230,140 @@
      CSS-only expand: hidden checkboxes
      outside the grid drive panel reveal -->
 <section class="contributors" id="contributors">
-
-  <!--
-    Three hidden checkboxes — one per contributor.
-    The labels for these live inside the contributor cards.
-    :checked CSS rules then reveal the matching panel.
-  -->
-  <input type="checkbox" class="contrib-trigger" id="c1" />
-  <input type="checkbox" class="contrib-trigger" id="c2" />
-  <input type="checkbox" class="contrib-trigger" id="c3" />
-
   <div class="contributors__inner">
 
     <p class="section-eyebrow">The Team</p>
     <h2 class="section-heading">Meet the <em>contributors.</em></h2>
-    <p class="section-sub">The people who built ASCIIForge. Click any card to learn more about them.</p>
+    <p class="section-sub">The people who built ASCIIForge — their craft, their stack, their story.</p>
 
-    <!--
-      Grid layout:
-        Row 1 → 3 cards (cols 1-3)
-        Row 2 → 3 panels (each spanning all cols, revealed by :checked)
-    -->
     <div class="contrib-grid">
 
-      <!-- ── Contributor 1 ── -->
-      <label class="contrib-card contrib-card--1" for="c1" aria-label="View profile of Ositadinma Divine">
-        <div class="contrib-card__active-pip" aria-hidden="true"></div>
+      <!-- Contributor 1 -->
+      <div class="contrib-card">
 
-        <div class="contrib-card__avatar" aria-hidden="true">
-          <div class="contrib-card__initials">AO</div>
+        <div class="contrib-card__photo-wrap">
+          <img
+            class="contrib-card__photo"
+            src="/web/assets/divine.jpeg"
+            alt="Photo of Ositadinma Divine .A."
+          />
           <span class="contrib-card__role-badge">Lead Dev</span>
         </div>
 
         <div class="contrib-card__info">
           <div class="contrib-card__name">{{.LeadContributorName}}</div>
-          <div class="contrib-card__title">Lead Developer</div>
-          <div class="contrib-card__expand-hint">
-            <div class="contrib-panel contrib-panel--1" aria-live="polite">
-                <div class="contrib-panel__inner">
-                <div class="contrib-panel__avatar" aria-hidden="true">AO</div>
-                <div class="contrib-panel__body">
-                    <div class="contrib-panel__name">{{.LeadContributorName}}</div>
-                    <div class="contrib-panel__role">Lead Developer · Lagos, NG</div>
-                    <p class="contrib-panel__bio">
-                    {{.LeadAbout}}
-                    </p>
-                    <div class="contrib-panel__tags">
-                    <span class="contrib-panel__tag">Docker</span>
-                    <span class="contrib-panel__tag">Rust</span>
-                    <span class="contrib-panel__tag">JavaScript</span>
-                    <span class="contrib-panel__tag">Node.js</span>
-                    <span class="contrib-panel__tag">Go</span>
-                    </div>
-                </div>
-                <div class="contrib-panel__links">
-                    <a class="contrib-panel__link" href="#">
-                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="4.5" stroke="currentColor" stroke-width="1.3"/><path d="M4 6a4.5 4.5 0 004.5 0M6 1.5v9" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
-                    Portfolio
-                    </a>
-                    <a class="contrib-panel__link" href="#">
-                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1C3.24 1 1 3.24 1 6c0 2.21 1.43 4.08 3.42 4.74.25.05.34-.11.34-.24v-.86c-1.39.3-1.68-.67-1.68-.67-.23-.58-.56-.73-.56-.73-.46-.31.03-.3.03-.3.5.03.77.52.77.52.45.77 1.18.55 1.47.42.05-.33.18-.55.32-.68-1.11-.13-2.28-.56-2.28-2.48 0-.55.2-1 .52-1.35-.05-.13-.23-.64.05-1.33 0 0 .42-.13 1.38.52A4.8 4.8 0 016 3.46c.43 0 .86.06 1.26.17.96-.65 1.38-.52 1.38-.52.28.69.1 1.2.05 1.33.32.35.52.8.52 1.35 0 1.93-1.17 2.35-2.29 2.47.18.16.34.46.34.93v1.38c0 .13.09.29.34.24A5.002 5.002 0 0011 6c0-2.76-2.24-5-5-5z" fill="currentColor"/></svg>
-                    GitHub
-                    </a>
-                </div>
-                </div>
-            </div>
+          <div class="contrib-card__title">Lead Developer · Lagos, NG</div>
+
+          <p class="contrib-card__bio">
+            {{.LeadAbout}}
+          </p>
+
+          <div class="contrib-card__tags">
+            <span class="contrib-card__tag">Go</span>
+            <span class="contrib-card__tag">Rust</span>
+            <span class="contrib-card__tag">JavaScript</span>
+            <span class="contrib-card__tag">Node.js</span>
+            <span class="contrib-card__tag">PostgreSQL</span>
+            <span class="contrib-card__tag">Docker</span>
           </div>
-        </div>
-      </label>
 
-      <!-- ── Contributor 2 ── -->
-      <label class="contrib-card contrib-card--2" for="c2" aria-label="View profile of Tunde Adeyemi">
-        <div class="contrib-card__active-pip" aria-hidden="true"></div>
-
-        <div class="contrib-card__avatar" aria-hidden="true">
-          <div class="contrib-card__initials">TA</div>
-          <span class="contrib-card__role-badge">UI Design</span>
-        </div>
-
-        <div class="contrib-card__info">
-          <div class="contrib-card__name">{{.Contributor2Name}}</div>
-          <div class="contrib-card__title">UI / UX Designer</div>
-          <div class="contrib-card__expand-hint">
-            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <span>Tap to expand</span>
-          </div>
-        </div>
-      </label>
-
-      <!-- ── Contributor 3 ── -->
-      <label class="contrib-card contrib-card--3" for="c3" aria-label="View profile of Chisom Eze">
-        <div class="contrib-card__active-pip" aria-hidden="true"></div>
-
-        <div class="contrib-card__avatar" aria-hidden="true">
-          <div class="contrib-card__initials">CE</div>
-          <span class="contrib-card__role-badge">Backend</span>
-        </div>
-
-        <div class="contrib-card__info">
-          <div class="contrib-card__name">{{.Contributor3Name}}</div>
-          <div class="contrib-card__title">Backend Engineer</div>
-          <div class="contrib-card__expand-hint">
-            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <span>Tap to expand</span>
-          </div>
-        </div>
-      </label>
-
-      <!-- ── Expand Panel 1 ── -->
-
-      <!-- ── Expand Panel 2 ── -->
-      <div class="contrib-panel contrib-panel--2" aria-live="polite">
-        <div class="contrib-panel__inner">
-          <div class="contrib-panel__avatar" aria-hidden="true">TA</div>
-          <div class="contrib-panel__body">
-            <div class="contrib-panel__name">{{.Contributor2Name}}</div>
-            <div class="contrib-panel__role">UI / UX Designer · Abuja, NG</div>
-            <p class="contrib-panel__bio">
-              {{.Contributor2About}}
-            </p>
-            <div class="contrib-panel__tags">
-              <span class="contrib-panel__tag">Figma</span>
-              <span class="contrib-panel__tag">Design Systems</span>
-              <span class="contrib-panel__tag">Typography</span>
-              <span class="contrib-panel__tag">CSS</span>
-              <span class="contrib-panel__tag">Accessibility</span>
-            </div>
-          </div>
-          <div class="contrib-panel__links">
-            <a class="contrib-panel__link" href="#">
+          <div class="contrib-card__links">
+            <a class="contrib-card__link" href="#">
               <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="4.5" stroke="currentColor" stroke-width="1.3"/><path d="M4 6a4.5 4.5 0 004.5 0M6 1.5v9" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
-              Portfolio
+              LinkedIn
             </a>
-            <a class="contrib-panel__link" href="#">
-              <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1.5 9L4 6.5 6 8.5 8.5 5.5 10.5 9H1.5z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>
-              Dribble
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- ── Expand Panel 3 ── -->
-      <div class="contrib-panel contrib-panel--3" aria-live="polite">
-        <div class="contrib-panel__inner">
-          <div class="contrib-panel__avatar" aria-hidden="true">CE</div>
-          <div class="contrib-panel__body">
-            <div class="contrib-panel__name">{{.Contributor3Name}}</div>
-            <div class="contrib-panel__role">Backend Engineer · Port Harcourt, NG</div>
-            <p class="contrib-panel__bio">
-              {{.Contributor3About}}
-            </p>
-            <div class="contrib-panel__tags">
-              <span class="contrib-panel__tag">Python</span>
-              <span class="contrib-panel__tag">FastAPI</span>
-              <span class="contrib-panel__tag">PostgreSQL</span>
-              <span class="contrib-panel__tag">Docker</span>
-              <span class="contrib-panel__tag">Security</span>
-            </div>
-          </div>
-          <div class="contrib-panel__links">
-            <a class="contrib-panel__link" href="#">
-              <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="4.5" stroke="currentColor" stroke-width="1.3"/><path d="M4 6a4.5 4.5 0 004.5 0M6 1.5v9" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
-              Portfolio
-            </a>
-            <a class="contrib-panel__link" href="#">
+            <a class="contrib-card__link" href="#">
               <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1C3.24 1 1 3.24 1 6c0 2.21 1.43 4.08 3.42 4.74.25.05.34-.11.34-.24v-.86c-1.39.3-1.68-.67-1.68-.67-.23-.58-.56-.73-.56-.73-.46-.31.03-.3.03-.3.5.03.77.52.77.52.45.77 1.18.55 1.47.42.05-.33.18-.55.32-.68-1.11-.13-2.28-.56-2.28-2.48 0-.55.2-1 .52-1.35-.05-.13-.23-.64.05-1.33 0 0 .42-.13 1.38.52A4.8 4.8 0 016 3.46c.43 0 .86.06 1.26.17.96-.65 1.38-.52 1.38-.52.28.69.1 1.2.05 1.33.32.35.52.8.52 1.35 0 1.93-1.17 2.35-2.29 2.47.18.16.34.46.34.93v1.38c0 .13.09.29.34.24A5.002 5.002 0 0011 6c0-2.76-2.24-5-5-5z" fill="currentColor"/></svg>
               GitHub
             </a>
           </div>
         </div>
-      </div>
+
+      </div><!-- /.contrib-card -->
+
+      <!-- Contributor 2 -->
+      <div class="contrib-card">
+
+        <div class="contrib-card__photo-wrap">
+          <img
+            class="contrib-card__photo"
+            src="/web/assets/esther.jpeg"
+            alt="Photo of Esther Lari"
+          />
+          <span class="contrib-card__role-badge">UI Design</span>
+        </div>
+
+        <div class="contrib-card__info">
+          <div class="contrib-card__name">{{.Contributor2Name}}</div>
+          <div class="contrib-card__title">UI / UX Designer · Abuja, NG</div>
+
+          <p class="contrib-card__bio">
+            {{.Contributor2About}}
+          </p>
+
+          <div class="contrib-card__tags">
+            <span class="contrib-card__tag">Figma</span>
+            <span class="contrib-card__tag">Design Systems</span>
+            <span class="contrib-card__tag">Typography</span>
+            <span class="contrib-card__tag">CSS</span>
+            <span class="contrib-card__tag">Accessibility</span>
+          </div>
+
+          <div class="contrib-card__links">
+            <a class="contrib-card__link" href="#">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="4.5" stroke="currentColor" stroke-width="1.3"/><path d="M4 6a4.5 4.5 0 004.5 0M6 1.5v9" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+              LinkedIn
+            </a>
+            <a class="contrib-card__link" href="#">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1.5 9L4 6.5 6 8.5 8.5 5.5 10.5 9H1.5z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>
+              Dribble
+            </a>
+          </div>
+        </div>
+
+      </div><!-- /.contrib-card -->
+
+      <!-- ── Contributor 3 ── -->
+      <div class="contrib-card">
+
+        <div class="contrib-card__photo-wrap">
+          <img
+            class="contrib-card__photo"
+            src="/web/assets/ola.jpeg"
+            alt="Photo of Olayiwola Salawu"
+          />
+          <span class="contrib-card__role-badge">Backend</span>
+        </div>
+
+        <div class="contrib-card__info">
+          <div class="contrib-card__name">{{.Contributor3Name}}</div>
+          <div class="contrib-card__title">Backend Engineer · Port Harcourt, NG</div>
+
+          <p class="contrib-card__bio">
+            {{.Contributor3About}}
+          </p>
+
+          <div class="contrib-card__tags">
+            <span class="contrib-card__tag">Python</span>
+            <span class="contrib-card__tag">FastAPI</span>
+            <span class="contrib-card__tag">PostgreSQL</span>
+            <span class="contrib-card__tag">Docker</span>
+            <span class="contrib-card__tag">Security</span>
+          </div>
+
+          <div class="contrib-card__links">
+            <a class="contrib-card__link" href="#">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="4.5" stroke="currentColor" stroke-width="1.3"/><path d="M4 6a4.5 4.5 0 004.5 0M6 1.5v9" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+              LinkedIn
+            </a>
+            <a class="contrib-card__link" href="#">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1C3.24 1 1 3.24 1 6c0 2.21 1.43 4.08 3.42 4.74.25.05.34-.11.34-.24v-.86c-1.39.3-1.68-.67-1.68-.67-.23-.58-.56-.73-.56-.73-.46-.31.03-.3.03-.3.5.03.77.52.77.52.45.77 1.18.55 1.47.42.05-.33.18-.55.32-.68-1.11-.13-2.28-.56-2.28-2.48 0-.55.2-1 .52-1.35-.05-.13-.23-.64.05-1.33 0 0 .42-.13 1.38.52A4.8 4.8 0 016 3.46c.43 0 .86.06 1.26.17.96-.65 1.38-.52 1.38-.52.28.69.1 1.2.05 1.33.32.35.52.8.52 1.35 0 1.93-1.17 2.35-2.29 2.47.18.16.34.46.34.93v1.38c0 .13.09.29.34.24A5.002 5.002 0 0011 6c0-2.76-2.24-5-5-5z" fill="currentColor"/></svg>
+              GitHub
+            </a>
+          </div>
+        </div>
+
+      </div><!-- /.contrib-card -->
 
     </div><!-- /.contrib-grid -->
   </div><!-- /.contributors__inner -->
@@ -411,7 +375,7 @@
   <div class="history__inner">
 
     <div class="history__aside">
-      <p class="history__aside-label">// ascii_heritage</p>
+      <p class="history__aside-label">Ascii Heritage</p>
       <h2 class="history__aside-heading">
         60 years of<br><em>character art.</em>
       </h2>
@@ -424,11 +388,11 @@
       <div class="stat-row">
         <div class="stat-card">
           <div class="stat-card__num">128</div>
-          <div class="stat-card__label">Original chars</div>
+          <div class="stat-card__label">Original Chars</div>
         </div>
         <div class="stat-card">
           <div class="stat-card__num">1963</div>
-          <div class="stat-card__label">Year invented</div>
+          <div class="stat-card__label">Year Invented</div>
         </div>
         <div class="stat-card">
           <div class="stat-card__num">6</div>
@@ -496,9 +460,15 @@
       Your text.<br>Your <em>art.</em>
     </h2>
     <p class="cta-banner__body">
-      Start generating ASCII banners in under 30 seconds.
+      Start generating ASCII banners in 30 seconds.
       No credit card. No installs. Just characters.
     </p>
+    <p class="cta-banner__body">
+      Do you want to have a lunch break?
+    </p>
+    <div class="cta-banner__btns">
+      <a href="#" class="btn-cta-dark">Log out</a>
+    </div>
   </div>
 </section>
 
@@ -531,7 +501,7 @@
     </div>
 
     <div>
-      <div class="footer__col-title">Learn2Earn Fellowship</div>
+      <div class="footer__col-title">Company</div>
       <ul class="footer__links">
         <li><a href="#about">About us</a></li>
         <li><a href="#contributors">Contributors</a></li>
@@ -559,7 +529,7 @@
       <a href="#">Privacy</a>
       <a href="#">Terms</a>
       <a href="#">Cookies</a>
-      <a href="https://github.com/dositadi/">GitHub</a>
+      <a href="#">GitHub</a>
     </div>
   </div>
 
