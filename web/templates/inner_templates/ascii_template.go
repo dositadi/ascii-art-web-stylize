@@ -22,20 +22,29 @@ func ASCIITemplate(w http.ResponseWriter, output string) *m.Error {
 		LogOutRoute      string
 		TextKey          string
 		BannerKey        string
+		PostRoute        string
 		Output           string
 		DownloadImgRoute string
 		DownloadTxtRoute string
 		SaveOutputRoute  string
 		ViewHistoryRoute string
+		RecievedOutput   bool
 	}{
-		Output:           output,
 		TextKey:          h.TEXT_KEY,
 		BannerKey:        h.BANNER_KEY,
 		LogOutRoute:      "",
+		PostRoute:        h.ASCII_ROUTE,
+		RecievedOutput:   false,
 		DownloadImgRoute: "",
 		DownloadTxtRoute: "",
 		SaveOutputRoute:  "",
 		ViewHistoryRoute: "",
+		Output:           "",
+	}
+
+	if output != "" {
+		asciiPageDetails.RecievedOutput = true
+		asciiPageDetails.Output = output
 	}
 
 	if err1 := temp.Execute(w, asciiPageDetails); err1 != nil {

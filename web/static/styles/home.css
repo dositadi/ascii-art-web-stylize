@@ -1,8 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Fira+Code:wght@400;500&display=swap');
 
-/* ═══════════════════════════════════════
-   TOKENS
-═══════════════════════════════════════ */
+/* TOKENS */
 :root {
   --blue:           #2563EB;
   --blue-dark:      #1D4ED8;
@@ -27,9 +25,7 @@
   --max-w:          1100px;
 }
 
-/* ═══════════════════════════════════════
-   RESET
-═══════════════════════════════════════ */
+/* RESET */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 
@@ -41,9 +37,7 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* ═══════════════════════════════════════
-   TOPBAR
-═══════════════════════════════════════ */
+/* TOPBAR */
 .topbar {
   position: sticky;
   top: 0;
@@ -149,9 +143,7 @@ body {
 /* Mobile hamburger (CSS-only disclosure) */
 .nav__toggle { display: none; }
 
-/* ═══════════════════════════════════════
-   HERO SECTION
-═══════════════════════════════════════ */
+/* HERO SECTION */
 .hero {
   position: relative;
   overflow: hidden;
@@ -336,9 +328,7 @@ body {
   border-radius: 50%;
 }
 
-/* ═══════════════════════════════════════
-   ASCII INTRO STRIP
-═══════════════════════════════════════ */
+/* ASCII INTRO STRIP */
 .intro-strip {
   background: var(--navy);
   padding: 60px 36px;
@@ -414,9 +404,7 @@ body {
 .ascii-line--dim    { color: #475569; }
 .ascii-line--mid    { color: #94A3B8; }
 
-/* ═══════════════════════════════════════
-   FEATURES SECTION
-═══════════════════════════════════════ */
+/* FEATURES SECTION */
 .features {
   padding: 88px 36px;
   background: var(--milk);
@@ -545,9 +533,7 @@ body {
   overflow: hidden;
 }
 
-/* ═══════════════════════════════════════
-   CONTRIBUTORS SECTION
-═══════════════════════════════════════ */
+/* CONTRIBUTORS SECTION */
 .contributors {
   padding: 88px 36px;
   background: var(--surface);
@@ -701,9 +687,7 @@ body {
   background: var(--blue-tint);
 }
 
-/* ═══════════════════════════════════════
-   HISTORY SECTION (ASCII story)
-═══════════════════════════════════════ */
+/* HISTORY SECTION (ASCII story) */
 .history {
   background: var(--milk);
   padding: 88px 36px;
@@ -856,9 +840,7 @@ body {
   letter-spacing: 0.3px;
 }
 
-/* ═══════════════════════════════════════
-   CTA BANNER
-═══════════════════════════════════════ */
+/* CTA BANNER */
 .cta-banner {
   background: var(--navy);
   padding: 72px 36px;
@@ -966,9 +948,7 @@ body {
 
 .btn-cta-ghost:hover { border-color: #334155; color: #CBD5E1; transform: translateY(-2px); }
 
-/* ═══════════════════════════════════════
-   FOOTER
-═══════════════════════════════════════ */
+/* FOOTER */
 .footer {
   background: var(--navy);
   border-top: 1px solid #1E293B;
@@ -1090,17 +1070,13 @@ body {
 
 .footer__bottom-links a:hover { color: #64748B; }
 
-/* ═══════════════════════════════════════
-   SHARED KEYFRAMES
-═══════════════════════════════════════ */
+/* SHARED KEYFRAMES */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(14px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 
-/* ═══════════════════════════════════════
-   RESPONSIVE
-═══════════════════════════════════════ */
+/* RESPONSIVE */
 @media (max-width: 960px) {
   .features__grid       { grid-template-columns: 1fr 1fr; }
   .intro-strip__inner   { grid-template-columns: 1fr; gap: 36px; }

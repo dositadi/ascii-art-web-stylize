@@ -38,18 +38,18 @@ func (a *App) InitializeRoutes() {
 	handler := h_.CreateNewService(service)
 
 	// Welcome Page
-	a.Router.HandleFunc("GET /", handler.WelcomePageHandler)
+	a.Router.HandleFunc("GET "+h.WELCOME_ROUTE, handler.WelcomePageHandler)
 
 	// Auth route
-	a.Router.HandleFunc("GET /auth/login", handler.LoginPageHandler)
-	a.Router.HandleFunc("POST /auth/login", handler.LoginHandler)
+	a.Router.HandleFunc("GET "+h.LOGIN_ROUTE, handler.LoginPageHandler)
+	a.Router.HandleFunc("POST "+h.LOGIN_ROUTE, handler.LoginHandler)
 
-	a.Router.HandleFunc("POST /auth/register", handler.RegisterHandler)
-	a.Router.HandleFunc("GET /auth/register", handler.RegisterPageHandler)
+	a.Router.HandleFunc("POST "+h.SIGNUP_ROUTE, handler.RegisterHandler)
+	a.Router.HandleFunc("GET "+h.SIGNUP_ROUTE, handler.RegisterPageHandler)
 
 	// Pages route
-	a.Router.Handle("GET /home", mid.AuthenticateUser(http.HandlerFunc(handler.HomePageHandler)))
-	a.Router.HandleFunc("GET /ascii-art/about-us", handler.AboutPageHandler)
+	a.Router.Handle("GET "+h.HOME_ROUTE, mid.AuthenticateUser(http.HandlerFunc(handler.HomePageHandler)))
+	a.Router.HandleFunc("GET "+h.ASCII_ROUTE, handler.AsciiArtPageHandler)
 
 	a.Router.HandleFunc("GET /health", handler.HealthCheckHandler)
 }
