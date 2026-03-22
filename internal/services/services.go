@@ -22,6 +22,7 @@ type Transformer interface {
 	ReadAsciiFromFont(rn rune, banner string) ([]string, *m.Error)
 	ReadWords(input []string, banner string) ([][][]string, *m.Error)
 	FormatAsciiWords(asciiWords [][][]string) string
+	RenderAsciiArtOutput(w http.ResponseWriter, r *http.Request) *m.Error
 }
 
 type Service struct {
