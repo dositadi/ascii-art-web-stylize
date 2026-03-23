@@ -35,7 +35,7 @@
   --radius-card:    20px;
   --radius-btn:     13px;
   --radius-logo:    9px;
-  --max-w:          1100px;
+  --max-w:          1400px;
 }
 
 /* RESET */
@@ -65,10 +65,9 @@ body {
 }
 
 .topbar__inner {
-  max-width: var(--max-w);
-  margin: 0 auto;
-  padding: 0 36px;
-  height: 68px;
+  width: 100%;
+  padding: 0 16px;
+  height: 76px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -210,13 +209,12 @@ body {
 /* PAGE WRAPPER */
 .page {
   flex: 1;
-  max-width: var(--max-w);
   width: 100%;
   margin: 0 auto;
-  padding: 36px 36px 64px;
+  padding: 40px 16px 80px;
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 32px;
 }
 
 /* ── Page header ── */
@@ -224,8 +222,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
-  padding-bottom: 22px;
+  gap: 20px;
+  padding-bottom: 32px;
   border-bottom: 1px solid var(--border);
   opacity: 0;
   animation: fadeUp 0.4s ease 0.05s forwards;
@@ -237,14 +235,14 @@ body {
   color: var(--blue);
   letter-spacing: 2px;
   text-transform: uppercase;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
 }
 
 .page-header__title {
-  font-size: 26px;
+  font-size: 32px;
   font-weight: 600;
-  letter-spacing: -0.6px;
-  line-height: 1.2;
+  letter-spacing: -0.8px;
+  line-height: 1.15;
   color: var(--text-primary);
 }
 
@@ -255,10 +253,10 @@ body {
 }
 
 .page-header__sub {
-  font-size: 13.5px;
+  font-size: 14.5px;
   color: var(--text-secondary);
-  margin-top: 4px;
-  line-height: 1.55;
+  margin-top: 8px;
+  line-height: 1.65;
 }
 
 /* Online badge */
@@ -314,8 +312,8 @@ body {
 /* ── Chrome bar ── */
 .tc-chrome {
   background: #1C2128;
-  height: 46px;
-  padding: 0 20px;
+  height: 54px;
+  padding: 0 28px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -378,7 +376,7 @@ body {
 .tc-input-bar {
   background: #161B22;
   border-bottom: 1px solid var(--term-border);
-  padding: 16px 20px;
+  padding: 22px 28px;
 }
 
 .tc-input-bar__label {
@@ -387,7 +385,7 @@ body {
   color: var(--term-dim);
   letter-spacing: 1px;
   text-transform: uppercase;
-  margin-bottom: 10px;
+  margin-bottom: 14px;
   display: flex;
   align-items: center;
   gap: 8px;
@@ -545,10 +543,10 @@ body {
 .tc-toolbar {
   background: #1C2128;
   border-bottom: 1px solid var(--term-border);
-  padding: 9px 18px;
+  padding: 12px 24px;
   display: flex;
   align-items: center;
-  gap: 7px;
+  gap: 9px;
   flex-wrap: wrap;
 }
 
@@ -564,11 +562,11 @@ body {
 .tbtn {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  padding: 6px 12px;
-  border-radius: 7px;
+  gap: 7px;
+  padding: 8px 15px;
+  border-radius: 8px;
   font-family: var(--mono);
-  font-size: 11px;
+  font-size: 11.5px;
   font-weight: 500;
   cursor: pointer;
   border: 1px solid var(--term-border-hi);
@@ -624,11 +622,11 @@ body {
 .dropdown__btn {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  padding: 6px 12px;
-  border-radius: 7px;
+  gap: 7px;
+  padding: 8px 15px;
+  border-radius: 8px;
   font-family: var(--mono);
-  font-size: 11px;
+  font-size: 11.5px;
   font-weight: 500;
   cursor: pointer;
   border: 1px solid rgba(210, 153, 34, 0.28);
@@ -700,8 +698,8 @@ body {
 /* ── Terminal body ── */
 .tc-body {
   background: var(--term-bg);
-  padding: 28px 30px 36px;
-  min-height: 380px;
+  padding: 40px 40px 52px;
+  min-height: 480px;
   position: relative;
   overflow: hidden;
 }
@@ -741,20 +739,20 @@ body {
   display: flex;
   align-items: baseline;
   gap: 0;
-  margin-bottom: 24px;
+  margin-bottom: 32px;
   position: relative;
   z-index: 1;
   flex-wrap: wrap;
   row-gap: 4px;
 }
 
-.p-user   { font-family: var(--mono); font-size: 13px; color: var(--term-green); }
-.p-at     { font-family: var(--mono); font-size: 13px; color: var(--term-dim); }
-.p-host   { font-family: var(--mono); font-size: 13px; color: var(--term-blue); }
-.p-colon  { font-family: var(--mono); font-size: 13px; color: var(--term-dim); }
-.p-dir    { font-family: var(--mono); font-size: 13px; color: var(--term-purple); }
-.p-dollar { font-family: var(--mono); font-size: 13px; color: var(--term-dim); padding: 0 6px; }
-.p-cmd    { font-family: var(--mono); font-size: 13px; color: var(--term-text); }
+.p-user   { font-family: var(--mono); font-size: 14px; color: var(--term-green); }
+.p-at     { font-family: var(--mono); font-size: 14px; color: var(--term-dim); }
+.p-host   { font-family: var(--mono); font-size: 14px; color: var(--term-blue); }
+.p-colon  { font-family: var(--mono); font-size: 14px; color: var(--term-dim); }
+.p-dir    { font-family: var(--mono); font-size: 14px; color: var(--term-purple); }
+.p-dollar { font-family: var(--mono); font-size: 14px; color: var(--term-dim); padding: 0 8px; }
+.p-cmd    { font-family: var(--mono); font-size: 14px; color: var(--term-text); }
 
 .p-cursor {
   display: inline-block;
@@ -992,9 +990,8 @@ body {
 }
 
 .footer__top {
-  max-width: var(--max-w);
-  margin: 0 auto;
-  padding: 52px 36px 40px;
+  width: 100%;
+  padding: 52px 16px 40px;
   display: grid;
   grid-template-columns: 2fr 1fr 1fr 1fr;
   gap: 48px;
@@ -1075,9 +1072,8 @@ body {
 
 .footer__bottom {
   border-top: 1px solid #1E293B;
-  max-width: var(--max-w);
-  margin: 0 auto;
-  padding: 20px 36px;
+  width: 100%;
+  padding: 20px 16px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -1105,32 +1101,404 @@ body {
 .footer__bottom-links a:hover { color: #64748B; }
 
 /* KEYFRAMES */
+/* ═══════════════════════════════════════════
+   KEYFRAMES
+═══════════════════════════════════════════ */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(14px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 
-/* RESPONSIVE */
-@media (max-width: 860px) {
-  .tc-form        { flex-direction: column; align-items: stretch; }
-  .tc-options     { justify-content: space-between; }
-  .recents__grid  { grid-template-columns: repeat(2, 1fr); }
+/* ═══════════════════════════════════════════
+   RESPONSIVE
+   .page has NO max-width — it fills the full
+   viewport width, controlled by padding alone.
+   .topbar__inner and .footer sections keep
+   their max-width so content doesn't stretch
+   unreadably on ultra-wide monitors.
+
+   Breakpoints:
+     ≥ 1280px  laptop and above
+      < 960px  tablet landscape
+      < 768px  tablet portrait
+      < 600px  large phone / phablet
+      < 480px  standard phone
+      < 360px  small phone
+═══════════════════════════════════════════ */
+
+/* ── ≥ 1280px: laptop and above ────────────
+   Slim side padding keeps terminal wide.
+   Terminal body gets more height.
+   Output font bumps up to use the extra space.
+─────────────────────────────────────────── */
+@media (min-width: 1280px) {
+
+  .page {
+    padding: 20px 8px 40px;
+    gap: 32px;
+  }
+
+  .topbar__inner {
+    padding: 0 16px;
+  }
+
+  .tc-body {
+    min-height: 520px;
+  }
+
+  .tc-output pre {
+    font-size: 14px;
+  }
+
+  .footer__top {
+    padding: 56px 16px 44px;
+  }
+
+  .footer__bottom {
+    padding: 22px 16px;
+  }
 }
 
-@media (max-width: 720px) {
-  .topbar__inner  { padding: 0 20px; }
-  .nav__link span { display: none; }
-  .nav__link      { padding: 8px 10px; }
-  .nav__user      { display: none; }
-  .page           { padding: 24px 20px 52px; }
-  .footer__top    { grid-template-columns: 1fr 1fr; gap: 28px; padding: 36px 20px 28px; }
-  .footer__bottom { padding: 18px 20px; flex-direction: column; text-align: center; }
-  .tc-toolbar     { gap: 5px; }
+/* ── < 960px: tablet landscape ─────────────
+   Form stacks vertically; recents 2-col;
+   footer collapses to 2-column grid.
+─────────────────────────────────────────── */
+@media (max-width: 960px) {
+
+  .page {
+    padding: 28px 28px 52px;
+    gap: 20px;
+  }
+
+  .tc-form {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .tc-text-wrap {
+    min-width: 0;
+    width: 100%;
+  }
+
+  .tc-options {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+
+  .recents__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .footer__top {
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    padding: 40px 28px 32px;
+  }
 }
 
+/* ── < 768px: tablet portrait ──────────────
+   Nav icon-only; user pill text hides;
+   chrome title hides; toolbar info wraps.
+─────────────────────────────────────────── */
+@media (max-width: 768px) {
+
+  .topbar__inner {
+    padding: 0 20px;
+    gap: 12px;
+  }
+
+  .nav__link span {
+    display: none;
+  }
+
+  .nav__link {
+    padding: 8px 11px;
+  }
+
+  .nav__user span {
+    display: none;
+  }
+
+  .nav__user {
+    padding: 5px 6px;
+    margin-right: 4px;
+  }
+
+  .page {
+    padding: 24px 20px 52px;
+    gap: 18px;
+  }
+
+  .page-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .page-header__title {
+    font-size: 22px;
+  }
+
+  .chrome-title {
+    display: none;
+  }
+
+  .tc-input-bar {
+    padding: 14px 16px;
+  }
+
+  .tc-toolbar {
+    padding: 8px 14px;
+    gap: 5px;
+  }
+
+  .toolbar-info {
+    width: 100%;
+    margin-left: 0;
+    padding-top: 6px;
+    border-top: 1px solid var(--term-border);
+    gap: 16px;
+  }
+
+  .tc-body {
+    padding: 20px 18px 28px;
+    min-height: 280px;
+  }
+
+  .tc-output pre {
+    font-size: 11.5px;
+  }
+
+  .p-user, .p-at, .p-host, .p-colon, .p-dir, .p-dollar, .p-cmd {
+    font-size: 11px;
+  }
+
+  .tc-statusbar .sb-group:last-child {
+    display: none;
+  }
+
+  .footer__top {
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    padding: 32px 20px 24px;
+  }
+
+  .footer__bottom {
+    padding: 16px 20px;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+  }
+}
+
+/* ── < 600px: large phone / phablet ────────
+   User pill gone; selects 2-col grid;
+   toolbar icon-only; footer single column.
+─────────────────────────────────────────── */
+@media (max-width: 600px) {
+
+  .nav__user {
+    display: none;
+  }
+
+  .topbar__inner {
+    padding: 0 16px;
+  }
+
+  .tc-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  .tc-options .tc-select {
+    min-width: 0;
+    width: 100%;
+  }
+
+  .tc-generate-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .tbtn span {
+    display: none;
+  }
+
+  .tbtn {
+    padding: 6px 9px;
+  }
+
+  .dropdown__btn span {
+    display: none;
+  }
+
+  .dropdown__btn {
+    padding: 6px 9px;
+  }
+
+  .recents__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .footer__top {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 28px 16px 20px;
+  }
+
+  .footer__bottom {
+    padding: 14px 16px;
+  }
+}
+
+/* ── < 480px: standard phone ────────────────
+   Max compression; single column everything;
+   prompt path hides; separators gone.
+─────────────────────────────────────────── */
 @media (max-width: 480px) {
-  .recents__grid  { grid-template-columns: 1fr; }
-  .footer__top    { grid-template-columns: 1fr; }
-  .tbtn span      { display: none; }
-  .tc-options     { flex-direction: column; }
+
+  .page {
+    padding: 18px 14px 44px;
+    gap: 14px;
+  }
+
+  .status-badge {
+    display: none;
+  }
+
+  .page-header__title {
+    font-size: 20px;
+  }
+
+  .page-header__sub {
+    font-size: 12.5px;
+  }
+
+  .terminal-card {
+    border-radius: 12px;
+  }
+
+  .tc-input-bar {
+    padding: 12px 14px;
+  }
+
+  .tc-input-bar__label {
+    font-size: 9px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .tc-text-input {
+    font-size: 12.5px;
+  }
+
+  .tc-options {
+    grid-template-columns: 1fr;
+  }
+
+  .tc-body {
+    padding: 16px 14px 22px;
+    min-height: 220px;
+  }
+
+  .tc-output pre {
+    font-size: 10px;
+    line-height: 1.45;
+  }
+
+  .tc-prompt {
+    margin-bottom: 16px;
+  }
+
+  .p-user, .p-at, .p-host, .p-colon, .p-dir, .p-dollar, .p-cmd {
+    font-size: 10px;
+  }
+
+  .p-dir, .p-colon {
+    display: none;
+  }
+
+  .tc-toolbar {
+    padding: 7px 10px;
+    gap: 4px;
+  }
+
+  .toolbar-sep {
+    display: none;
+  }
+
+  .toolbar-info {
+    gap: 10px;
+  }
+
+  .toolbar-meta {
+    font-size: 9px;
+  }
+
+  .tc-statusbar {
+    padding: 6px 14px;
+  }
+
+  .sb-group:first-child .sb-item:not(:first-child) {
+    display: none;
+  }
+
+  .recents__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .recents {
+    padding: 16px;
+  }
+
+  .footer__top {
+    padding: 24px 14px 18px;
+  }
+
+  .footer__bottom {
+    padding: 12px 14px;
+  }
+}
+
+/* ── < 360px: small phone ───────────────────
+   Logo text hides; non-essential nav gone;
+   terminal font at absolute minimum.
+─────────────────────────────────────────── */
+@media (max-width: 360px) {
+
+  .nav__link:not(.nav__link--history):not(.nav__link--logout) {
+    display: none;
+  }
+
+  .logo__name {
+    display: none;
+  }
+
+  .page {
+    padding: 14px 10px 36px;
+  }
+
+  .tc-input-bar__label {
+    display: none;
+  }
+
+  .tc-output pre {
+    font-size: 9px;
+    line-height: 1.4;
+  }
+
+  .chrome-right {
+    display: none;
+  }
+
+  .footer__top {
+    padding: 20px 10px 14px;
+  }
+
+  .footer__bottom-links {
+    gap: 12px;
+  }
 }

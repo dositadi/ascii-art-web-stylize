@@ -8,6 +8,4 @@ func (s *Handler) HomePageHandler(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, err.Details, http.StatusInternalServerError)
 		return
 	}
-	w.Header().Set("Content-Type", "text/html")
-	w.WriteHeader(http.StatusOK)
 }

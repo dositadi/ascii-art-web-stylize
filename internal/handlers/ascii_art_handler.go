@@ -9,6 +9,4 @@ func (s *Handler) AsciiArtPageHandler(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		http.Error(w, err.Details, http.StatusInternalServerError)
 	}
-	w.Header().Set("Content-Type", "text/html")
-	w.WriteHeader(http.StatusOK)
 }
