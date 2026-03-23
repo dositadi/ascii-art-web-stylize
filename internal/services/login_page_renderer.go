@@ -35,21 +35,20 @@ func (s *Service) RenderLoginPage(w http.ResponseWriter, r *http.Request, messag
 
 	if message != nil {
 		loginPageData.ErrorMessage = *message
-		if err2 := temp.ExecuteTemplate(w, "error", loginPageData); err2 != nil {
+
+		if err2 := temp.Execute(w, loginPageData); err2 != nil {
 			return &m.Error{
 				Error:   h.PAGE_PARSING_ERROR,
-				Details: err2.Error(),
+				Details: err2.Error() + "1",
 				Code:    h.PAGE_PARSING_CODE,
 			}
 		}
 		return nil
-	}
-
-	if s.GetHxRequestStatus(r) {
+	} else if s.GetHxRequestStatus(r) {
 		if err3 := temp.ExecuteTemplate(w, "login", loginPageData); err3 != nil {
 			return &m.Error{
 				Error:   h.PAGE_PARSING_ERROR,
-				Details: err3.Error(),
+				Details: err3.Error() + "2",
 				Code:    h.PAGE_PARSING_CODE,
 			}
 		}
@@ -57,7 +56,7 @@ func (s *Service) RenderLoginPage(w http.ResponseWriter, r *http.Request, messag
 		if err4 := temp.Execute(w, loginPageData); err4 != nil {
 			return &m.Error{
 				Error:   h.PAGE_PARSING_ERROR,
-				Details: err4.Error(),
+				Details: err4.Error() + "3",
 				Code:    h.PAGE_PARSING_CODE,
 			}
 		}

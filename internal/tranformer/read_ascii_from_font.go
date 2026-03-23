@@ -41,7 +41,6 @@ func (at *AsciiTransform) ReadAsciiFromFont(rn rune, banner string) ([]string, *
 	startLine := at.CalculateStartLine(rn)
 	currentLine := 0
 	endLine := calcEndline(startLine)
-	fmt.Println(startLine, endLine)
 
 	for scanner.Scan() {
 		if currentLine >= startLine && currentLine <= endLine {

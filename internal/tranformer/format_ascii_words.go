@@ -1,7 +1,6 @@
 package tranformer
 
 import (
-	"fmt"
 	"strings"
 
 	m "acad.learn2earn.ng/git/dositadi/ascii-art-web-stylize/pkg/models"
@@ -17,11 +16,9 @@ func (at *AsciiTransform) ReadWords(input []string, banner string) ([][][]string
 		if strings.Compare(current, "") == 0 {
 			wordsAsciiChar = append(wordsAsciiChar, []string{""})
 			output = append(output, wordsAsciiChar)
-			fmt.Println("Entered")
 			continue
 		}
 		for _, rn := range current {
-			fmt.Println(string(rn))
 			asciiChar, err := at.ReadAsciiFromFont(rn, banner)
 			if err != nil {
 				return nil, &m.Error{

@@ -46,9 +46,7 @@ func (s *Service) RenderSignupPage(w http.ResponseWriter, r *http.Request, messa
 			}
 		}
 		return nil
-	}
-
-	if s.GetHxRequestStatus(r) {
+	} else if s.GetHxRequestStatus(r) {
 		if err3 := temp.ExecuteTemplate(w, "signup", signupPageDetail); err3 != nil {
 			return &m.Error{
 				Error:   h.PAGE_PARSING_ERROR,

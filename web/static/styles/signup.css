@@ -190,12 +190,11 @@ body {
 /* PAGE LAYOUT
    Two-column on wide screens:
    left = ASCII brand panel, right = form card */
-.page {
+.s_page {
   position: relative;
   z-index: 2;
   min-height: 100vh;
   display: flex;
-  flex-direction: row;
   align-items: center;
   justify-content: center;
   padding: 100px 24px 60px;
@@ -330,7 +329,7 @@ body {
 
 /* bottom watermark */
 .signup-card::after {
-  content: '// ascii_forge.register';
+  content: 'ascii_forge.register';
   position: absolute;
   bottom: 12px;
   left: 50%;

@@ -9,7 +9,7 @@ import (
 )
 
 func (s *Service) TransformText(w http.ResponseWriter, r *http.Request, text, banner string) *m.Error {
-	output, err := s.AsciiTransformer.SplitInputByNewline(text)
+	latinWords, err := s.AsciiTransformer.SplitInputByNewline(text)
 	if err != nil {
 		return &m.Error{
 			Error:   h.PROCESS_TEXT_ERR,
@@ -18,7 +18,7 @@ func (s *Service) TransformText(w http.ResponseWriter, r *http.Request, text, ba
 		}
 	}
 
-	asciiWords, err2 := s.AsciiTransformer.ReadWords(output, banner)
+	asciiWords, err2 := s.AsciiTransformer.ReadWords(latinWords, banner)
 	if err2 != nil {
 		return err
 	}
