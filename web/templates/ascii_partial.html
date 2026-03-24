@@ -269,7 +269,7 @@
       <div class="toolbar-sep"></div>
 
       <!-- Clear -->
-      <button class="tbtn tbtn--clear" type="button" title="Clear terminal output">
+      <button hx-get={{.PostRoute}} hx-swap="innerHTML" hx-target="#body" hx-push-url="true" class="tbtn tbtn--clear" type="button" title="Clear terminal output">
         <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
           <path d="M2.5 2.5l8 8M10.5 2.5l-8 8" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
         </svg>

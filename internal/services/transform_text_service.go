@@ -3,7 +3,6 @@ package services
 import (
 	"fmt"
 	"net/http"
-	"slices"
 	"time"
 
 	m "acad.learn2earn.ng/git/dositadi/ascii-art-web-stylize/pkg/models"
@@ -33,13 +32,16 @@ func (s *Service) TransformText(w http.ResponseWriter, r *http.Request, text, ba
 	toolbarFont := fmt.Sprintf("font: %s", banner)
 	toolbarChars := fmt.Sprintf("chars: %v", len(text))
 	toolbarLines := fmt.Sprintf("lines: %v", len(latinWords))
-	var maxWordLength int
 
-	if len(latinWords) != 0 || latinWords != nil {
-		maxWordLength = len(slices.Max(latinWords))
+	var maxWord int
+
+	for _, word := range latinWords {
+		if len(word) > maxWord {
+			maxWord = len(word)
+		}
 	}
 
-	AsciiForgeFooter := fmt.Sprintf("width: %v chars  ·  height: %v lines  ·  encoding: UTF-8", maxWordLength, len(latinWords))
+	AsciiForgeFooter := fmt.Sprintf("width: %v chars  ·  height: %v lines  ·  encoding: UTF-8", maxWord, len(latinWords))
 
 	err3 := s.AsciiTransformer.RenderAsciiArtOutput(w, r, formattedAsciiWords, uiCliInput, AsciiForgeHeader, responseTime, toolbarFont, toolbarChars, toolbarLines, AsciiForgeFooter)
 	if err3 != nil {
