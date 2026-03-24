@@ -17,7 +17,4 @@ func (s *Handler) TransformTextHandler(w http.ResponseWriter, r *http.Request) {
 		s.Service.RenderAsciiArtPage(w, r)
 		return
 	}
-
-	w.Header().Set("Content-Type", "text/html")
-	w.WriteHeader(http.StatusOK)
 }

@@ -49,7 +49,7 @@ func (a *App) InitializeRoutes() {
 
 	// Pages route
 	a.Router.Handle("GET "+h.HOME_ROUTE, mid.AuthenticateUser(http.HandlerFunc(handler.HomePageHandler)))
-	a.Router.HandleFunc("GET "+h.ASCII_ROUTE, handler.AsciiArtPageHandler)
+	a.Router.Handle("GET "+h.ASCII_ROUTE, mid.AuthenticateUser(http.HandlerFunc(handler.AsciiArtPageHandler)))
 	a.Router.HandleFunc("POST "+h.ASCII_ROUTE, handler.TransformTextHandler)
 
 	a.Router.HandleFunc("GET /health", handler.HealthCheckHandler)

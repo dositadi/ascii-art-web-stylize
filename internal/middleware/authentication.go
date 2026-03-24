@@ -45,7 +45,7 @@ func AuthenticateUser(next http.Handler) http.Handler {
 		}
 
 		// Step five: create a context with value to pass the user_id forward to the next server
-		ctx := context.WithValue(r.Context(), "user_id", activeUser.ID)
+		ctx := context.WithValue(r.Context(), "user_id", activeUser.Id)
 		next.ServeHTTP(w, r.WithContext(ctx))
 	})
 }

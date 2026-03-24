@@ -11,6 +11,8 @@ import (
 )
 
 func (s *Service) TransformText(w http.ResponseWriter, r *http.Request, text, banner string, start time.Time) *m.Error {
+	id := r.Context().Value("user_id")
+	fmt.Println(id)
 	latinWords, err := s.AsciiTransformer.SplitInputByNewline(text)
 	if err != nil {
 		return &m.Error{
@@ -33,7 +35,14 @@ func (s *Service) TransformText(w http.ResponseWriter, r *http.Request, text, ba
 	toolbarFont := fmt.Sprintf("font: %s", banner)
 	toolbarChars := fmt.Sprintf("chars: %v", len(text))
 	toolbarLines := fmt.Sprintf("lines: %v", len(latinWords))
-	AsciiForgeFooter := fmt.Sprintf("width: %v chars  ·  height: %v lines  ·  encoding: UTF-8", len(slices.Max(latinWords)), len(latinWords))
+	var maxWordLength int
+
+	if len(latinWords) != 0 || latinWords != nil {
+		maxWordLength = len(slices.Max(latinWords))
+	}
+	fmt.Println(maxWordLength, " : ", slices.Max(latinWords))
+
+	AsciiForgeFooter := fmt.Sprintf("width: %v chars  ·  height: %v lines  ·  encoding: UTF-8", maxWordLength, len(latinWords))
 
 	err3 := s.AsciiTransformer.RenderAsciiArtOutput(w, r, formattedAsciiWords, uiCliInput, AsciiForgeHeader, responseTime, toolbarFont, toolbarChars, toolbarLines, AsciiForgeFooter)
 	if err3 != nil {

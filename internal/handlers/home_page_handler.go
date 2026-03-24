@@ -1,6 +1,8 @@
 package handlers
 
-import "net/http"
+import (
+	"net/http"
+)
 
 func (s *Handler) HomePageHandler(w http.ResponseWriter, r *http.Request) {
 	err := s.Service.RenderHomePage(w, r)
