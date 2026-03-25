@@ -20,6 +20,7 @@ type AsciiServices interface {
 	RenderLoginPage(w http.ResponseWriter, r *http.Request, message *string) *m.Error
 	RenderSignupPage(w http.ResponseWriter, r *http.Request, message *string) *m.Error
 	RenderHomePage(w http.ResponseWriter, r *http.Request) *m.Error
+	RenderHistoryPage(w http.ResponseWriter, r *http.Request) *m.Error
 
 	// Render HTML partials function
 	//RenderAsciiPlaceholder(w http.ResponseWriter, r *http.Request) *m.Error

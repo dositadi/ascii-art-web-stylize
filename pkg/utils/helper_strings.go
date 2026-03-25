@@ -53,11 +53,14 @@ const (
 
 // Request routes
 const (
-	LOGIN_ROUTE   = "/auth/login"
-	SIGNUP_ROUTE  = "/auth/register"
-	WELCOME_ROUTE = "/"
-	HOME_ROUTE    = "/home"
-	ASCII_ROUTE   = "/home/ascii-art"
+	LOGIN_ROUTE    = "/auth/login"
+	SIGNUP_ROUTE   = "/auth/register"
+	WELCOME_ROUTE  = "/"
+	HOME_ROUTE     = "/home"
+	ASCII_ROUTE    = "/home/ascii-art"
+	HISTORY_ROUTE  = "/home/ascii-art/history"
+	ABOUT_US_ROUTE = "/home#"
+	CONTRIBUTORS_ROUTE = "/home#"
 	// TRANSFORM_TEXT_ROUTE = "/home/ascii-art/transform-text"
 )
 

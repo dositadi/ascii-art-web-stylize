@@ -1,0 +1,489 @@
+{{define "history"}}
+<!-- TOPBAR -->
+<header class="topbar">
+  <div class="topbar__inner">
+
+    <a class="logo" href="home.html">
+      <div class="logo__icon"><span>A_</span></div>
+      <div class="logo__name">ASCIIForge<sub>app</sub></div>
+    </a>
+
+    <nav class="nav-group" aria-label="App navigation">
+
+      <a class="nav__user" href="#">
+        <div class="nav__user-avatar">AO</div>
+        <span>ada_okonkwo</span>
+      </a>
+
+      <a class="nav__link" href="home.html#about">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+          <circle cx="7" cy="7" r="5.5" stroke="currentColor" stroke-width="1.4"/>
+          <path d="M7 6.5v4M7 4.5v.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+        </svg>
+        <span>About</span>
+      </a>
+
+      <a class="nav__link" href="home.html#help">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+          <circle cx="7" cy="7" r="5.5" stroke="currentColor" stroke-width="1.4"/>
+          <path d="M5.5 5.5a1.5 1.5 0 112.12 1.37C7.24 7.14 7 7.55 7 8M7 9.5v.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+        </svg>
+        <span>Help</span>
+      </a>
+      
+      <a class="nav__link" hx-get={{.AsciiRoute}} hx-target="#body" hx-swap="innerHTML" hx-push-url="true">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+          <path d="M2 3.5h10M7 3.5v7M4.5 10.5h5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+        </svg>
+        <span>Generate</span>
+      </a>
+
+      <a class="nav__link nav__link--logout" href="welcome.html">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+          <path d="M5.5 7h6M9 4.5l3 2.5-3 2.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M7.5 2.5H3a1 1 0 00-1 1v7a1 1 0 001 1h4.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+        </svg>
+        <span>Log out</span>
+      </a>
+
+    </nav>
+  </div>
+</header>
+
+
+<!-- PAGE -->
+<main class="page">
+
+  <!-- Page header -->
+  <div class="page-header">
+    <div class="page-header__left">
+      <p class="page-header__eyebrow">ascii_forge.history</p>
+      <h1 class="page-header__title">Saved <em>Banners.</em></h1>
+      <p class="page-header__sub">Every ASCII banner you've saved lives here. Copy, share, download or delete them any time.</p>
+    </div>
+    <div class="page-header__badge">6 banners saved</div>
+  </div>
+
+  <!-- Filter bar -->
+  <div class="filter-bar" role="toolbar" aria-label="Filter and sort">
+
+    <span class="filter-bar__label">filter:</span>
+
+    <div class="filter-bar__group">
+      <a class="filter-btn filter-btn--active" href="#">All</a>
+      <a class="filter-btn" href="#">Standard</a>
+      <a class="filter-btn" href="#">Shadow</a>
+      <a class="filter-btn" href="#">Tinkertoy</a>
+     <!--  <a class="filter-btn" href="#">Digital</a>
+      <a class="filter-btn" href="#">Double</a> -->
+    </div>
+
+    <div class="filter-bar__right">
+      <a class="clear-all-btn" href="#">
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+          <path d="M2 2l8 8M10 2l-8 8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+        </svg>
+        Clear all
+      </a>
+    </div>
+
+  </div>
+
+
+  <!-- HISTORY LIST  (populated state)
+       Remove this section and show
+       .history-empty instead when empty.-->
+  <div class="history-list" aria-label="Saved banners">
+
+    <!-- ── Banner item 1 ── -->
+    <article class="hist-card" aria-label="Saved banner: Hello World">
+
+      <div class="hist-card__header">
+
+        <div class="hist-card__meta">
+          <div class="hist-card__input-text">Hello World</div>
+          <div class="hist-card__tags">
+            <span class="hist-tag hist-tag--style">block</span>
+            <span class="hist-tag hist-tag--size">medium</span>
+            <span class="hist-tag hist-tag--border">no border</span>
+          </div>
+        </div>
+
+        <span class="hist-card__date">23 Mar 2026 · 14:32</span>
+
+        <div class="hist-card__actions">
+
+          <button class="hbtn hbtn--copy" type="button" title="Copy to clipboard">
+            <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
+              <rect x="4.5" y="4.5" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.2"/>
+              <path d="M4.5 8.5H3a1 1 0 01-1-1V3a1 1 0 011-1h4.5a1 1 0 011 1v1.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+            </svg>
+            <span>Copy</span>
+          </button>
+
+          <button class="hbtn hbtn--share" type="button" title="Share this banner">
+            <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
+              <circle cx="10" cy="2.5" r="1.5" stroke="currentColor" stroke-width="1.2"/>
+              <circle cx="10" cy="10.5" r="1.5" stroke="currentColor" stroke-width="1.2"/>
+              <circle cx="3"  cy="6.5"  r="1.5" stroke="currentColor" stroke-width="1.2"/>
+              <path d="M4.4 7.3l4.2 2.4M8.6 3.3L4.4 5.7" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+            </svg>
+            <span>Share</span>
+          </button>
+
+          <button class="hbtn hbtn--download" type="button" title="Download banner">
+            <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
+              <path d="M6.5 2v7M3.5 6.5l3 3 3-3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M2 10.5h9" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+            </svg>
+            <span>Download</span>
+          </button>
+
+          <a class="hbtn hbtn--forge" href="ascii.html" title="Re-open in Forge">
+            <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
+              <path d="M2 6.5a4.5 4.5 0 119 0" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+              <path d="M9 3.5l2 3-3 .5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span>Re-forge</span>
+          </a>
+
+          <button class="hbtn hbtn--delete" type="button" title="Delete banner">
+            <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
+              <path d="M2.5 4h8M5 4V2.5h3V4M10 4l-.5 7a1 1 0 01-1 .9H4.5a1 1 0 01-1-.9L3 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span>Delete</span>
+          </button>
+
+        </div>
+      </div><!-- /.hist-card__header -->
+
+      <!-- Terminal output panel -->
+      <div class="hist-terminal">
+
+        <div class="hist-terminal__bar">
+          <div class="hist-terminal__bar-left">
+            <div class="mini-dot mini-dot--red"></div>
+            <div class="mini-dot mini-dot--amber"></div>
+            <div class="mini-dot mini-dot--green"></div>
+            <span class="hist-terminal__bar-title">// Hello World · block · medium</span>
+          </div>
+          <div class="hist-terminal__bar-status">
+            <div class="status-pip"></div>
+            <span>saved</span>
+          </div>
+        </div>
+
+        <div class="hist-terminal__body">
+          <div class="hist-output">
+<pre> █████╗ ███████╗ ██████╗██╗██╗    ██╗    ██╗ ██████╗ ██████╗ ██╗     ██████╗
+██╔══██╗██╔════╝██╔════╝██║██║    ██║    ██║██╔═══██╗██╔══██╗██║     ██╔══██╗
+███████║███████╗██║     ██║██║    ██║ █╗ ██║██║   ██║██████╔╝██║     ██║  ██║
+██╔══██║╚════██║██║     ██║██║    ██║███╗██║██║   ██║██╔══██╗██║     ██║  ██║
+██║  ██║███████║╚██████╗██║██║    ╚███╔███╔╝╚██████╔╝██║  ██║███████╗██████╔╝
+╚═╝  ╚═╝╚══════╝ ╚═════╝╚═╝╚═╝    ╚══╝╚══╝  ╚═════╝ ╚═╝  ╚═╝╚══════╝╚═════╝</pre>
+          </div>
+        </div>
+
+      </div><!-- /.hist-terminal -->
+    </article><!-- /.hist-card -->
+
+
+    <!-- ── Banner item 2 ── -->
+    <article class="hist-card" aria-label="Saved banner: ASCIIForge">
+
+      <div class="hist-card__header">
+
+        <div class="hist-card__meta">
+          <div class="hist-card__input-text">ASCIIForge</div>
+          <div class="hist-card__tags">
+            <span class="hist-tag hist-tag--style">double</span>
+            <span class="hist-tag hist-tag--size">medium</span>
+            <span class="hist-tag hist-tag--border">double border</span>
+          </div>
+        </div>
+
+        <span class="hist-card__date">22 Mar 2026 · 09:14</span>
+
+        <div class="hist-card__actions">
+          <button class="hbtn hbtn--copy" type="button" title="Copy"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><rect x="4.5" y="4.5" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.2"/><path d="M4.5 8.5H3a1 1 0 01-1-1V3a1 1 0 011-1h4.5a1 1 0 011 1v1.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg><span>Copy</span></button>
+          <button class="hbtn hbtn--share" type="button" title="Share"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><circle cx="10" cy="2.5" r="1.5" stroke="currentColor" stroke-width="1.2"/><circle cx="10" cy="10.5" r="1.5" stroke="currentColor" stroke-width="1.2"/><circle cx="3" cy="6.5" r="1.5" stroke="currentColor" stroke-width="1.2"/><path d="M4.4 7.3l4.2 2.4M8.6 3.3L4.4 5.7" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg><span>Share</span></button>
+          <button class="hbtn hbtn--download" type="button" title="Download"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M6.5 2v7M3.5 6.5l3 3 3-3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/><path d="M2 10.5h9" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg><span>Download</span></button>
+          <a class="hbtn hbtn--forge" href="ascii.html" title="Re-forge"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5a4.5 4.5 0 119 0" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><path d="M9 3.5l2 3-3 .5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Re-forge</span></a>
+          <button class="hbtn hbtn--delete" type="button" title="Delete"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2.5 4h8M5 4V2.5h3V4M10 4l-.5 7a1 1 0 01-1 .9H4.5a1 1 0 01-1-.9L3 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Delete</span></button>
+        </div>
+      </div>
+
+      <div class="hist-terminal">
+        <div class="hist-terminal__bar">
+          <div class="hist-terminal__bar-left">
+            <div class="mini-dot mini-dot--red"></div>
+            <div class="mini-dot mini-dot--amber"></div>
+            <div class="mini-dot mini-dot--green"></div>
+            <span class="hist-terminal__bar-title">// ASCIIForge · double · medium</span>
+          </div>
+          <div class="hist-terminal__bar-status">
+            <div class="status-pip"></div>
+            <span>saved</span>
+          </div>
+        </div>
+        <div class="hist-terminal__body">
+          <div class="hist-output">
+<pre>╔══════════════════════════════════════════════════════════════════════╗
+║  █████╗ ███████╗ ██████╗██╗██╗    ███████╗ ██████╗ ██████╗  ██████╗ ███████╗  ║
+║ ██╔══██╗██╔════╝██╔════╝██║██║    ██╔════╝██╔═══██╗██╔══██╗██╔════╝ ██╔════╝  ║
+║ ███████║███████╗██║     ██║██║    █████╗  ██║   ██║██████╔╝██║  ███╗█████╗    ║
+║ ██╔══██║╚════██║██║     ██║██║    ██╔══╝  ██║   ██║██╔══██╗██║   ██║██╔══╝    ║
+║ ██║  ██║███████║╚██████╗██║██║    ██║     ╚██████╔╝██║  ██║╚██████╔╝███████╗  ║
+║ ╚═╝  ╚═╝╚══════╝ ╚═════╝╚═╝╚═╝   ╚═╝      ╚═════╝ ╚═╝  ╚═╝ ╚═════╝ ╚══════╝  ║
+╚══════════════════════════════════════════════════════════════════════╝</pre>
+          </div>
+        </div>
+      </div>
+    </article>
+
+
+    <!-- ── Banner item 3 ── -->
+    <article class="hist-card" aria-label="Saved banner: Lagos">
+
+      <div class="hist-card__header">
+        <div class="hist-card__meta">
+          <div class="hist-card__input-text">Lagos</div>
+          <div class="hist-card__tags">
+            <span class="hist-tag hist-tag--style">slant</span>
+            <span class="hist-tag hist-tag--size">large</span>
+            <span class="hist-tag hist-tag--border">no border</span>
+          </div>
+        </div>
+        <span class="hist-card__date">21 Mar 2026 · 18:55</span>
+        <div class="hist-card__actions">
+          <button class="hbtn hbtn--copy" type="button" title="Copy"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><rect x="4.5" y="4.5" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.2"/><path d="M4.5 8.5H3a1 1 0 01-1-1V3a1 1 0 011-1h4.5a1 1 0 011 1v1.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg><span>Copy</span></button>
+          <button class="hbtn hbtn--share" type="button" title="Share"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><circle cx="10" cy="2.5" r="1.5" stroke="currentColor" stroke-width="1.2"/><circle cx="10" cy="10.5" r="1.5" stroke="currentColor" stroke-width="1.2"/><circle cx="3" cy="6.5" r="1.5" stroke="currentColor" stroke-width="1.2"/><path d="M4.4 7.3l4.2 2.4M8.6 3.3L4.4 5.7" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg><span>Share</span></button>
+          <button class="hbtn hbtn--download" type="button" title="Download"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M6.5 2v7M3.5 6.5l3 3 3-3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/><path d="M2 10.5h9" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg><span>Download</span></button>
+          <a class="hbtn hbtn--forge" href="ascii.html" title="Re-forge"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5a4.5 4.5 0 119 0" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><path d="M9 3.5l2 3-3 .5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Re-forge</span></a>
+          <button class="hbtn hbtn--delete" type="button" title="Delete"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2.5 4h8M5 4V2.5h3V4M10 4l-.5 7a1 1 0 01-1 .9H4.5a1 1 0 01-1-.9L3 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Delete</span></button>
+        </div>
+      </div>
+
+      <div class="hist-terminal">
+        <div class="hist-terminal__bar">
+          <div class="hist-terminal__bar-left">
+            <div class="mini-dot mini-dot--red"></div>
+            <div class="mini-dot mini-dot--amber"></div>
+            <div class="mini-dot mini-dot--green"></div>
+            <span class="hist-terminal__bar-title">// Lagos · slant · large</span>
+          </div>
+          <div class="hist-terminal__bar-status">
+            <div class="status-pip"></div>
+            <span>saved</span>
+          </div>
+        </div>
+        <div class="hist-terminal__body">
+          <div class="hist-output">
+<pre>    __    ___    ______  ____   _____
+   / /   /   |  / ____/ / __ \ / ___/
+  / /   / /| | / / __  / / / / \__ \
+ / /___/ ___ |/ /_/ / / /_/ / ___/ /
+/_____/_/  |_|\____/  \____/ /____/</pre>
+          </div>
+        </div>
+      </div>
+    </article>
+
+
+    <!-- ── Banner item 4 ── -->
+    <article class="hist-card" aria-label="Saved banner: CODE">
+
+      <div class="hist-card__header">
+        <div class="hist-card__meta">
+          <div class="hist-card__input-text">CODE</div>
+          <div class="hist-card__tags">
+            <span class="hist-tag hist-tag--style">digital</span>
+            <span class="hist-tag hist-tag--size">medium</span>
+            <span class="hist-tag hist-tag--border">simple border</span>
+          </div>
+        </div>
+        <span class="hist-card__date">20 Mar 2026 · 11:02</span>
+        <div class="hist-card__actions">
+          <button class="hbtn hbtn--copy" type="button" title="Copy"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><rect x="4.5" y="4.5" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.2"/><path d="M4.5 8.5H3a1 1 0 01-1-1V3a1 1 0 011-1h4.5a1 1 0 011 1v1.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg><span>Copy</span></button>
+          <button class="hbtn hbtn--share" type="button" title="Share"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><circle cx="10" cy="2.5" r="1.5" stroke="currentColor" stroke-width="1.2"/><circle cx="10" cy="10.5" r="1.5" stroke="currentColor" stroke-width="1.2"/><circle cx="3" cy="6.5" r="1.5" stroke="currentColor" stroke-width="1.2"/><path d="M4.4 7.3l4.2 2.4M8.6 3.3L4.4 5.7" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg><span>Share</span></button>
+          <button class="hbtn hbtn--download" type="button" title="Download"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M6.5 2v7M3.5 6.5l3 3 3-3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/><path d="M2 10.5h9" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg><span>Download</span></button>
+          <a class="hbtn hbtn--forge" href="ascii.html" title="Re-forge"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5a4.5 4.5 0 119 0" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><path d="M9 3.5l2 3-3 .5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Re-forge</span></a>
+          <button class="hbtn hbtn--delete" type="button" title="Delete"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2.5 4h8M5 4V2.5h3V4M10 4l-.5 7a1 1 0 01-1 .9H4.5a1 1 0 01-1-.9L3 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Delete</span></button>
+        </div>
+      </div>
+
+      <div class="hist-terminal">
+        <div class="hist-terminal__bar">
+          <div class="hist-terminal__bar-left">
+            <div class="mini-dot mini-dot--red"></div>
+            <div class="mini-dot mini-dot--amber"></div>
+            <div class="mini-dot mini-dot--green"></div>
+            <span class="hist-terminal__bar-title">// CODE · digital · medium</span>
+          </div>
+          <div class="hist-terminal__bar-status">
+            <div class="status-pip"></div>
+            <span>saved</span>
+          </div>
+        </div>
+        <div class="hist-terminal__body">
+          <div class="hist-output">
+<pre>+-------------------------------------------+
+| ┌─┐┌─┐┌─┐┌─┐                             |
+| │ ││ ││ ││ │                             |
+| └─┘└─┘└─┘└─┘                             |
+| C    O    D    E                          |
++-------------------------------------------+</pre>
+          </div>
+        </div>
+      </div>
+    </article>
+
+
+    <!-- ── Pagination ── -->
+    <!--
+      CSS-only pagination using anchor links.
+      In production this is driven server-side.
+      The prev/next links point to the appropriate
+      server route (e.g. /history?page=2).
+    -->
+    <nav class="pagination" aria-label="History pagination">
+
+      <span class="pagination__info">Showing 1–4 of 6 banners</span>
+
+      <div class="pagination__controls">
+
+        <!-- Prev — disabled on page 1 -->
+        <a class="page-btn" href="#" aria-disabled="true" aria-label="Previous page">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path d="M9 3L5 7l4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Prev
+        </a>
+
+        <!-- Page numbers -->
+        <a class="page-btn page-btn--active" href="#" aria-current="page" aria-label="Page 1">1</a>
+        <a class="page-btn" href="#" aria-label="Page 2">2</a>
+
+        <!-- Next -->
+        <a class="page-btn" href="#" aria-label="Next page">
+          Next
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path d="M5 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+
+      </div>
+    </nav>
+
+  </div><!-- /.history-list -->
+
+
+  <!--
+    EMPTY STATE
+    Show this instead of .history-list
+    when the user has no saved banners.
+    Remove the comment wrappers to activate.
+  -->
+  
+  <!-- <div class="history-empty" role="status" aria-label="No saved banners">
+
+    <div class="history-empty__icon" aria-hidden="true">
+      <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+        <path d="M5 5h22M5 11h22M5 17h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+        <path d="M22 19l6 6M28 19l-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+      </svg>
+    </div>
+
+    <div class="history-empty__heading">No banners saved</div>
+
+    <p class="history-empty__sub">
+      You haven't saved any ASCII banners yet.
+      Head to the Forge, generate something great,
+      and hit Save — it'll appear here.
+    </p>
+
+    <ul class="history-empty__items" aria-label="How to save a banner">
+      <li class="history-empty__item">
+        <span class="history-empty__item-dot" aria-hidden="true"></span>
+        Go to the <strong>Generate</strong> page and type your text
+      </li>
+      <li class="history-empty__item">
+        <span class="history-empty__item-dot" aria-hidden="true"></span>
+        Pick a font style and hit <strong>Generate</strong>
+      </li>
+      <li class="history-empty__item">
+        <span class="history-empty__item-dot" aria-hidden="true"></span>
+        Click the <strong>Save</strong> button in the toolbar — done
+      </li>
+    </ul>
+
+    <a class="history-empty__cta" href="ascii.html">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+        <path d="M2 3.5h10M7 3.5v7M4.5 10.5h5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+      </svg>
+      Go to the Forge
+    </a>
+
+  </div> -->
+ 
+
+</main><!-- /.page -->
+
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer__top">
+
+    <div>
+      <a class="footer__brand-name" href="home.html">
+        <div class="footer__logo-icon"><span>A_</span></div>
+        <span class="footer__logo-text">ASCIIForge</span>
+      </a>
+      <p class="footer__tagline">The modern web app for ASCII banner generation. Built with care, zero JavaScript, and a love for terminal aesthetics.</p>
+      <p class="footer__mono-tag">v1.0.0 &nbsp;·&nbsp; MIT License</p>
+    </div>
+
+    <div>
+      <div class="footer__col-title">Product</div>
+      <ul class="footer__links">
+        <li><a href="ascii.html">Generate</a></li>
+        <li><a href="history.html">History</a></li>
+        <li><a href="#">Settings</a></li>
+        <li><a href="#">Export</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <div class="footer__col-title">Company</div>
+      <ul class="footer__links">
+        <li><a href="home.html#about">About us</a></li>
+        <li><a href="home.html#contributors">Contributors</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Changelog</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <div class="footer__col-title">Support</div>
+      <ul class="footer__links">
+        <li><a href="home.html#help">Help Centre</a></li>
+        <li><a href="#">Documentation</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms of Service</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="footer__bottom">
+    <p class="footer__copy">© 2026 ASCIIForge &nbsp;·&nbsp; All characters reserved.</p>
+    <div class="footer__bottom-links">
+      <a href="#">Privacy</a>
+      <a href="#">Terms</a>
+      <a href="#">Cookies</a>
+      <a href="#">GitHub</a>
+    </div>
+  </div>
+</footer>
+{{end}}

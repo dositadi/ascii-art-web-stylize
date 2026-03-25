@@ -67,7 +67,7 @@ func (s *Service) RenderAsciiArtPage(w http.ResponseWriter, r *http.Request) *m.
 		DownloadImgRoute: "",
 		DownloadTxtRoute: "",
 		SaveOutputRoute:  "",
-		ViewHistoryRoute: "",
+		ViewHistoryRoute: h.HISTORY_ROUTE,
 		Output:           "",
 	}
 
