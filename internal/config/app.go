@@ -54,7 +54,7 @@ func (a *App) InitializeRoutes() {
 
 	// Text transform route
 	a.Router.HandleFunc("POST "+h.ASCII_ROUTE, handler.TransformTextHandler)
-	a.Router.Handle("POST /home/ascii/save-ascii", mid.AuthenticateUser(http.HandlerFunc(handler.SaveAsciiHandler)))
+	a.Router.Handle("POST "+h.SAVE_ASCII_ROUTE, mid.AuthenticateUser(http.HandlerFunc(handler.SaveAsciiHandler)))
 
 	a.Router.HandleFunc("GET /health", handler.HealthCheckHandler)
 }
@@ -90,7 +90,7 @@ func (a *App) Run() {
 	}
 
 	server := http.Server{
-		Addr:              ":8082",
+		Addr:              ":8081",
 		Handler:           a.Router,
 		WriteTimeout:      10 * time.Second,
 		IdleTimeout:       10 * time.Second,

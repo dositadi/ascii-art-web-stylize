@@ -1,0 +1,591 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Fira+Code:wght@400;500&display=swap');
+
+/* ═══════════════════════════════════════════
+   TOKENS  (identical across all pages)
+═══════════════════════════════════════════ */
+:root {
+  --blue:           #2563EB;
+  --blue-dark:      #1D4ED8;
+  --blue-light:     #BAE6FD;
+  --blue-tint:      #EFF6FF;
+  --milk:           #FAF9F6;
+  --milk-dark:      #F1EFE9;
+  --slate:          #64748B;
+  --slate-light:    #CBD5E1;
+  --border:         #E2E8F0;
+  --border-hover:   #BFDBFE;
+  --surface:        #FFFFFF;
+  --text-primary:   #0F172A;
+  --text-secondary: #475569;
+  --navy:           #0F172A;
+  --red:            #DC2626;
+  --red-dark:       #B91C1C;
+  --red-tint:       #FEF2F2;
+  --red-border:     #FECACA;
+  /* terminal */
+  --term-bg:        #0D1117;
+  --term-surface:   #161B22;
+  --term-border:    #21262D;
+  --term-border-hi: #30363D;
+  --term-text:      #E6EDF3;
+  --term-dim:       #8B949E;
+  --term-green:     #3FB950;
+  --term-blue:      #58A6FF;
+  --term-yellow:    #D29922;
+  --term-red:       #F85149;
+  --term-purple:    #BC8CFF;
+  --mono:           'Fira Code', 'JetBrains Mono', 'Courier New', monospace;
+  --sans:           'DM Sans', system-ui, sans-serif;
+  --radius-card:    20px;
+  --radius-btn:     13px;
+  --radius-logo:    9px;
+}
+
+/* ═══════════════════════════════════════════
+   GLOBAL RESET  (Rule 11)
+═══════════════════════════════════════════ */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--sans);
+  background: var(--milk);
+  color: var(--text-primary);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  -webkit-font-smoothing: antialiased;
+}
+
+img, video, svg, canvas {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ═══════════════════════════════════════════
+   TOPBAR
+═══════════════════════════════════════════ */
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 300;
+  background: rgba(250, 249, 246, 0.92);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(226, 232, 240, 0.7);
+}
+
+.topbar__inner {
+  width: 100%;
+  min-width: 0;
+  padding: 0 clamp(10px, 3vw, 24px);
+  height: clamp(54px, 8vw, 76px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: clamp(8px, 2vw, 20px);
+  box-sizing: border-box;
+}
+
+/* Logo */
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: clamp(7px, 1.5vw, 11px);
+  text-decoration: none;
+  color: inherit;
+  flex-shrink: 0;
+  min-width: 0;
+}
+
+.logo__icon {
+  width: clamp(30px, 5vw, 36px);
+  height: clamp(30px, 5vw, 36px);
+  background: var(--blue);
+  border-radius: var(--radius-logo);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.logo__icon span {
+  color: #fff;
+  font-family: var(--mono);
+  font-size: clamp(11px, 2vw, 14px);
+  font-weight: 500;
+  letter-spacing: -0.5px;
+}
+
+.logo__name {
+  font-size: clamp(14px, 2.5vw, 17px);
+  font-weight: 600;
+  letter-spacing: -0.4px;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.logo__name sub {
+  font-size: clamp(8px, 1.5vw, 10px);
+  color: var(--slate);
+  font-weight: 400;
+  margin-left: 3px;
+  vertical-align: baseline;
+}
+
+/* Back button */
+.back-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(5px, 1vw, 8px);
+  padding: clamp(8px, 1.5vw, 10px) clamp(12px, 2.5vw, 18px);
+  border-radius: 10px;
+  font-family: var(--sans);
+  font-size: clamp(12px, 2.2vw, 14px);
+  font-weight: 500;
+  color: var(--text-secondary);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  text-decoration: none;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+  min-height: 44px;
+  min-width: 44px;
+  transition: background 0.15s, border-color 0.15s, color 0.15s, transform 0.15s;
+}
+
+.back-btn svg { flex-shrink: 0; transition: transform 0.2s; }
+
+.back-btn:hover {
+  background: var(--blue-tint);
+  border-color: var(--border-hover);
+  color: var(--blue);
+  transform: translateX(-2px);
+}
+
+.back-btn:hover svg { transform: translateX(-3px); }
+.back-btn:active    { transform: translateX(0); }
+
+/* Hide label text on smallest phones */
+.back-btn__label { display: none; }
+
+/* ═══════════════════════════════════════════
+   PAGE WRAPPER
+   Centers the card vertically and horizontally
+═══════════════════════════════════════════ */
+.page {
+  flex: 1;
+  width: 100%;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(24px, 5vw, 64px) clamp(10px, 3vw, 24px);
+  box-sizing: border-box;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle ASCII tiled background on the page */
+.page__bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.page__bg-row {
+  display: flex;
+  white-space: nowrap;
+  line-height: 1.65;
+}
+
+.page__bg-row span {
+  font-family: var(--mono);
+  font-size: clamp(9px, 1.5vw, 11px);
+  color: var(--blue);
+  letter-spacing: 2.5px;
+  opacity: 0.03;
+}
+
+.page__bg-row:nth-child(odd)  span { animation: bgShimmer  9s ease-in-out infinite; }
+.page__bg-row:nth-child(3n)   span { animation: bgShimmer 13s ease-in-out infinite 2s; }
+.page__bg-row:nth-child(5n+2) span { animation: bgShimmer 11s ease-in-out infinite 5s; }
+
+@keyframes bgShimmer {
+  0%, 100% { opacity: 0.03; }
+  50%       { opacity: 0.065; }
+}
+
+/* ═══════════════════════════════════════════
+   ERROR CARD
+   The centered card that holds the error info.
+═══════════════════════════════════════════ */
+.error-card {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: clamp(300px, 90vw, 560px);
+  min-width: 0;
+  box-sizing: border-box;
+
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: clamp(14px, 3vw, var(--radius-card));
+  overflow: hidden;          /* clips border-radius corners on children */
+
+  opacity: 0;
+  animation: fadeUp 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.1s forwards;
+}
+
+/* Top accent bar — coloured per error type */
+.error-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  border-radius: clamp(14px, 3vw, var(--radius-card)) clamp(14px, 3vw, var(--radius-card)) 0 0;
+  /* default: red for errors — overridden per variant below */
+  background: var(--red);
+}
+
+/* 404 variant — blue accent */
+.error-card--404::before { background: var(--blue); }
+
+/* 500 variant — red accent */
+.error-card--500::before { background: var(--red); }
+
+/* 403 variant — amber accent */
+.error-card--403::before { background: var(--term-yellow); }
+
+/* ── Terminal chrome strip inside card ── */
+.error-card__chrome {
+  background: #1C2128;
+  height: clamp(38px, 6vw, 46px);
+  padding: 0 clamp(14px, 3vw, 20px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--term-border);
+  flex-shrink: 0;
+}
+
+.chrome-dots {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.chrome-dot {
+  width: clamp(9px, 1.5vw, 12px);
+  height: clamp(9px, 1.5vw, 12px);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.chrome-dot--red   { background: #FF5F56; box-shadow: 0 0 4px rgba(255,95,86,0.5); }
+.chrome-dot--amber { background: #FFBD2E; box-shadow: 0 0 4px rgba(255,189,46,0.5); }
+.chrome-dot--green { background: #27C93F; box-shadow: 0 0 4px rgba(39,201,63,0.5); }
+
+.error-card__chrome-title {
+  font-family: var(--mono);
+  font-size: clamp(9px, 1.8vw, 11px);
+  color: var(--term-dim);
+  letter-spacing: 0.3px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 60%;
+}
+
+.chrome-status {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  flex-shrink: 0;
+}
+
+.chrome-status-dot {
+  width: 5px;
+  height: 5px;
+  /* default: red for error state */
+  background: var(--term-red);
+  border-radius: 50%;
+}
+
+/* 404: dim — page not found, engine ok */
+.error-card--404 .chrome-status-dot { background: var(--term-yellow); }
+
+/* 500: red — server error */
+.error-card--500 .chrome-status-dot { background: var(--term-red); animation: blinkDot 1.5s ease-in-out infinite; }
+
+/* 403: amber — forbidden */
+.error-card--403 .chrome-status-dot { background: var(--term-yellow); }
+
+@keyframes blinkDot {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.2; }
+}
+
+.chrome-status-text {
+  font-family: var(--mono);
+  font-size: clamp(9px, 1.8vw, 10px);
+  color: var(--term-dim);
+}
+
+/* ── Card body ── */
+.error-card__body {
+  padding: clamp(24px, 5vw, 40px) clamp(20px, 5vw, 40px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: clamp(14px, 3vw, 22px);
+}
+
+/* Error code — the big number */
+.error-card__code {
+  font-family: var(--mono);
+  font-size: clamp(52px, 15vw, 96px);
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -3px;
+  color: var(--term-border-hi);     /* dim by default */
+  user-select: none;
+  opacity: 0;
+  animation: fadeUp 0.45s ease 0.25s forwards;
+}
+
+/* Per-variant code colours */
+.error-card--404 .error-card__code { color: var(--blue-light); }
+.error-card--500 .error-card__code { color: rgba(248, 81, 73, 0.35); }
+.error-card--403 .error-card__code { color: rgba(210, 153, 34, 0.4); }
+
+/* ASCII art inline decoration */
+.error-card__ascii {
+  font-family: var(--mono);
+  font-size: clamp(7px, 1.5vw, 10px);
+  line-height: 1.4;
+  color: var(--term-dim);
+  opacity: 0.55;
+  white-space: pre;
+  overflow-x: auto;               /* Rule 12 — pre must be scrollable */
+  overflow-y: visible;
+  max-width: 100%;
+  min-width: 0;
+  -webkit-overflow-scrolling: touch;
+}
+
+.error-card__ascii::-webkit-scrollbar { height: 3px; }
+.error-card__ascii::-webkit-scrollbar-track { background: transparent; }
+.error-card__ascii::-webkit-scrollbar-thumb { background: var(--term-border-hi); border-radius: 3px; }
+
+/* Title */
+.error-card__title {
+  font-size: clamp(17px, 4vw, 24px);
+  font-weight: 600;
+  letter-spacing: -0.4px;
+  line-height: 1.25;
+  color: var(--text-primary);
+}
+
+.error-card__title em {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--blue);
+}
+
+/* Error 500: red tint on title */
+.error-card--500 .error-card__title em { color: var(--red); }
+
+/* Error 403: amber tint */
+.error-card--403 .error-card__title em { color: var(--term-yellow); }
+
+/* Description */
+.error-card__desc {
+  font-size: clamp(13px, 2.5vw, 15px);
+  color: var(--text-secondary);
+  line-height: 1.72;
+  max-width: 380px;
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+/* Terminal-style error detail block */
+.error-card__detail {
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  background: var(--term-bg);
+  border: 1px solid var(--term-border);
+  border-radius: 10px;
+  padding: clamp(12px, 2.5vw, 18px) clamp(14px, 3vw, 20px);
+  text-align: left;
+}
+
+.error-card__detail-row {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: clamp(3px, 0.8vw, 5px) 0;
+  border-bottom: 1px solid #1E293B;
+}
+
+.error-card__detail-row:last-child { border-bottom: none; }
+
+.detail-key {
+  font-family: var(--mono);
+  font-size: clamp(9px, 1.8vw, 10.5px);
+  color: var(--term-dim);
+  letter-spacing: 0.3px;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.detail-val {
+  font-family: var(--mono);
+  font-size: clamp(9px, 1.8vw, 10.5px);
+  color: var(--term-text);
+  letter-spacing: 0.2px;
+  word-break: break-all;
+  overflow-wrap: break-word;
+  min-width: 0;
+}
+
+.detail-val--red    { color: var(--term-red); }
+.detail-val--yellow { color: var(--term-yellow); }
+.detail-val--blue   { color: var(--term-blue); }
+.detail-val--green  { color: var(--term-green); }
+
+/* ── Action buttons ── */
+.error-card__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(8px, 2vw, 12px);
+  width: 100%;
+  min-width: 0;
+}
+
+/* Primary action */
+.err-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: clamp(10px, 2vw, 13px) clamp(18px, 4vw, 28px);
+  background: var(--blue);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-btn);
+  font-family: var(--sans);
+  font-size: clamp(13px, 2.5vw, 15px);
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  white-space: nowrap;
+  min-height: 44px;
+  min-width: 44px;
+  transition: background 0.18s, transform 0.18s, box-shadow 0.18s;
+  box-shadow: 0 3px 14px rgba(37, 99, 235, 0.28);
+}
+
+.err-btn-primary:hover  { background: var(--blue-dark); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(37,99,235,0.35); }
+.err-btn-primary:active { transform: translateY(0); }
+
+/* Secondary action */
+.err-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: clamp(10px, 2vw, 13px) clamp(16px, 3vw, 24px);
+  background: var(--surface);
+  color: var(--text-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-btn);
+  font-family: var(--sans);
+  font-size: clamp(13px, 2.5vw, 15px);
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  white-space: nowrap;
+  min-height: 44px;
+  min-width: 44px;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+
+.err-btn-secondary:hover { background: var(--blue-tint); border-color: var(--border-hover); color: var(--blue); }
+
+/* ── Card footer note ── */
+.error-card__footer {
+  padding: clamp(12px, 2.5vw, 16px) clamp(20px, 5vw, 40px);
+  border-top: 1px solid var(--border);
+  text-align: center;
+  font-family: var(--mono);
+  font-size: clamp(9px, 1.8vw, 10.5px);
+  color: var(--slate-light);
+  letter-spacing: 0.3px;
+  background: var(--milk);
+}
+
+/* ═══════════════════════════════════════════
+   KEYFRAMES
+═══════════════════════════════════════════ */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ═══════════════════════════════════════════
+   RESPONSIVE — PURE MOBILE-FIRST
+   Base = 320px. Min-width ladder upward.
+   No max-width overrides.
+═══════════════════════════════════════════ */
+
+/* Base: hide back button label on smallest phones */
+.back-btn__label { display: none; }
+
+/* ── ≥ 480px: large phone ── */
+@media (min-width: 480px) {
+  .back-btn__label    { display: inline; }
+  .error-card__body   { padding: clamp(28px, 5vw, 40px) clamp(24px, 5vw, 40px); }
+}
+
+/* ── ≥ 600px: phablet ── */
+@media (min-width: 600px) {
+  .error-card         { max-width: min(520px, 90vw); }
+  .error-card__actions { flex-wrap: nowrap; }
+}
+
+/* ── ≥ 768px: tablet portrait ── */
+@media (min-width: 768px) {
+  .error-card         { max-width: 540px; }
+  .error-card__body   { padding: 40px; }
+  .error-card__code   { font-size: clamp(72px, 10vw, 96px); }
+}
+
+/* ── ≥ 1280px: laptop and above ── */
+@media (min-width: 1280px) {
+  .topbar__inner      { padding: 0 24px; height: 76px; }
+  .page               { padding: 80px 24px; }
+}

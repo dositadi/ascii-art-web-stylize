@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS ascii (
+CREATE TABLE IF NOT EXISTS ascii_outputs (
     id CHAR(36) PRIMARY KEY NOT NULL,
     user_id CHAR(36) NOT NULL,
     input_text TEXT NOT NULL,

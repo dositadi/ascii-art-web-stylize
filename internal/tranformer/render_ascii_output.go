@@ -20,9 +20,6 @@ func (at *AsciiTransform) RenderAsciiArtOutput(w http.ResponseWriter, r *http.Re
 
 	// Response details
 	responseDetails := struct {
-		InputText           string
-		CliEquivalent       string
-		Font                string
 		FormattedAsciiWords string
 		UiCliInput          string
 		AsciiForgeHeader    string
@@ -32,9 +29,6 @@ func (at *AsciiTransform) RenderAsciiArtOutput(w http.ResponseWriter, r *http.Re
 		ToolbarLines        string
 		AsciiForgeFooter    string
 	}{
-		Font:                banner,
-		InputText:           text,
-		CliEquivalent:       cliEquivalent,
 		FormattedAsciiWords: formattedAsciiWords,
 		UiCliInput:          uiCliInput,
 		AsciiForgeHeader:    asciiForgeHeader,
@@ -65,7 +59,7 @@ func (at *AsciiTransform) RenderAsciiArtOutput(w http.ResponseWriter, r *http.Re
 		RecievedOutput:   false,
 		DownloadImgRoute: "",
 		DownloadTxtRoute: "",
-		SaveOutputRoute:  "",
+		SaveOutputRoute:  h.SAVE_ASCII_ROUTE,
 		ViewHistoryRoute: "",
 		Output:           "",
 	}

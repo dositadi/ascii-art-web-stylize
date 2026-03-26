@@ -1,7 +1,29 @@
 package handlers
 
-import "net/http"
+import (
+	"fmt"
+	"net/http"
 
-func (h  *Handler) SaveAsciiHandler(w http.ResponseWriter, r *http.Request) {
-	
+	u "acad.learn2earn.ng/git/dositadi/ascii-art-web-stylize/pkg/utils"
+)
+
+func (h *Handler) SaveAsciiHandler(w http.ResponseWriter, r *http.Request) {
+	val := r.Context().Value("user_id")
+	var user_id string
+
+	if id, ok := val.(string); ok {
+		user_id = id
+	}
+
+	text := r.FormValue(u.TEXT_KEY)
+	banner := r.FormValue(u.BANNER_KEY)
+
+	err := h.Service.SaveAscii(r.Context(), text, banner, user_id)
+	if err != nil {
+		fmt.Println("Entered 1")
+		http.Error(w, "Save failed", http.StatusInternalServerError)
+		return
+	}
+
+	w.Header().Set("HX-Redirect", u.HISTORY_ROUTE)
 }

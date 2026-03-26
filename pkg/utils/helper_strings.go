@@ -62,6 +62,7 @@ const (
 	ABOUT_US_ROUTE     = "/home#about"
 	CONTRIBUTORS_ROUTE = "/home#contributors"
 	HELP_ROUTE         = "/home#help"
+	SAVE_ASCII_ROUTE   = "/home/ascii/save"
 )
 
 // Internal folder path
@@ -75,11 +76,12 @@ const (
 	// Users table
 	INSERT_INTO_USERS                = "INSERT INTO users (id,name,email,hashed_password) VALUES (?,?,?,?)"
 	CHECK_USER_EXISTS                = "SELECT EXISTS (SELECT 1 FROM users WHERE email=?)"
+	CHECK_ASCII_EXISTS               = "SELECT EXISTS (SELECT 1 FROM ascii_outputs WHERE id=?)"
 	GET_HPASS_ID_AND_NAME_WITH_EMAIL = "SELECT id, name, hashed_password FROM users WHERE email=? LIMIT 1"
 	GET_HPASS_ID_AND_NAME_WITH_ID    = "SELECT id, name, hashed_password FROM users WHERE id=? LIMIT 1"
 
 	// AsciiTexts Table
-	INSERT_INTO_ASCII_TEXTS = "INSERT INTO ascii (id, user_id, input_text, font, ascii_text, downloaded_as_image, downloaded_as_txt) VALUES (?,?,?,?,?,?,?)"
+	INSERT_INTO_ASCII_TEXTS = "INSERT INTO ascii_outputs (id, user_id, input_text, font, ascii_text) VALUES (?,?,?,?,?) WHERE user_id=?"
 )
 
 // Ascii keys

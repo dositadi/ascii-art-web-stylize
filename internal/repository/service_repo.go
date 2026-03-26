@@ -34,10 +34,10 @@ func (r *ServiceRepo) CheckIfUserExists(ctx context.Context, email string) (bool
 	return exists, nil
 }
 
-func (r *ServiceRepo) CheckIfAsciiExists(ctx context.Context, id string) (bool, *m.Error) {
+func (r *ServiceRepo) CheckIfAsciiExists(ctx context.Context, id string, user_id string) (bool, *m.Error) {
 	var exists bool
 
-	row := r.DB.QueryRowContext(ctx, "", id)
+	row := r.DB.QueryRowContext(ctx, h.CHECK_ASCII_EXISTS, id)
 
 	if err := row.Scan(&exists); err != nil {
 		if errors.Is(err, sql.ErrNoRows) {
