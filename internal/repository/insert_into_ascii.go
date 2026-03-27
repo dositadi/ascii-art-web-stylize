@@ -4,7 +4,6 @@ import (
 	"context"
 	"database/sql"
 	"errors"
-	"fmt"
 
 	m "acad.learn2earn.ng/git/dositadi/ascii-art-web-stylize/pkg/models"
 	h "acad.learn2earn.ng/git/dositadi/ascii-art-web-stylize/pkg/utils"
@@ -24,12 +23,10 @@ func (r *ServiceRepo) InsertAscii(ctx context.Context, ascii m.Ascii, user_id st
 
 	exists, err2 := r.CheckIfAsciiExists(ctx, ascii.Id, user_id)
 	if err2 != nil {
-		fmt.Println("Entered 9")
 		return err2
 	}
 
 	if exists {
-		fmt.Println("Entered 2")
 		return &m.Error{
 			Error:   h.CONFLICT_ERR,
 			Details: "Ascii has been saved already.",
@@ -37,9 +34,8 @@ func (r *ServiceRepo) InsertAscii(ctx context.Context, ascii m.Ascii, user_id st
 		}
 	}
 
-	_, err3 := tx.ExecContext(ctx, h.INSERT_INTO_ASCII_TEXTS, ascii.Id, ascii.UserId, ascii.InputText, ascii.Font, ascii.AsciiText, user_id)
+	_, err3 := tx.ExecContext(ctx, h.INSERT_INTO_ASCII_TEXTS, ascii.Id, ascii.UserId, ascii.InputText, ascii.Font, ascii.AsciiText)
 	if err3 != nil {
-		fmt.Println("Entered 3")
 		if err4 := tx.Rollback(); err4 != nil {
 			return &m.Error{
 				Error:   h.SERVER_ERR,
@@ -55,7 +51,6 @@ func (r *ServiceRepo) InsertAscii(ctx context.Context, ascii m.Ascii, user_id st
 	}
 
 	if err5 := tx.Commit(); err5 != nil {
-		fmt.Println("Entered 4")
 		return &m.Error{
 			Error:   h.SERVER_ERR,
 			Details: err5.Error(),

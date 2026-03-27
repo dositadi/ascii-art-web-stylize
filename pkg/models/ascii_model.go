@@ -5,7 +5,7 @@ import "time"
 type Ascii struct {
 	Id              string    `json:"id"`
 	UserId          string    `json:"user_id"`
-	InputText        string    `json:"input_text"`
+	InputText       string    `json:"input_text"`
 	Font            string    `json:"banner"`
 	AsciiText       string    `json:"ascii_text"`
 	DownloadedAsImg bool      `json:"downloaded_as_image"`

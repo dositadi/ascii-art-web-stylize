@@ -18,9 +18,13 @@ func (h *Handler) SaveAsciiHandler(w http.ResponseWriter, r *http.Request) {
 	text := r.FormValue(u.TEXT_KEY)
 	banner := r.FormValue(u.BANNER_KEY)
 
+	if text == "" {
+		fmt.Fprintf(w, `<div>`)
+		return
+	}
+
 	err := h.Service.SaveAscii(r.Context(), text, banner, user_id)
 	if err != nil {
-		fmt.Println("Entered 1")
 		http.Error(w, "Save failed", http.StatusInternalServerError)
 		return
 	}

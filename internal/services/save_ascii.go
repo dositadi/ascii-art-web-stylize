@@ -34,10 +34,7 @@ func (s *Service) SaveAscii(ctx context.Context, text, banner, user_id string) *
 
 	err3 := s.Repository.InsertAscii(ctx, ascii, user_id)
 	if err3 != nil {
-		fmt.Println("Entered 6")
 		return err3
 	}
-
-	fmt.Println("Inserted")
 	return nil
 }
