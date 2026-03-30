@@ -91,6 +91,7 @@ const (
 	CHECK_ASCII_EXISTS       = "SELECT EXISTS (SELECT 1 FROM ascii_outputs WHERE id=?)"
 	DELETE_ASCII             = "DELETE FROM ascii_outputs WHERE id=?"
 	FILTER_ASCII             = "SELECT id, input_text, font, ascii_text FROM ascii_outputs WHERE user_id=? AND font=?"
+	CLEAR_ALL_USER_DATA      = "DELETE FROM ascii_outputs WHERE user_id=?"
 )
 
 // Ascii keys

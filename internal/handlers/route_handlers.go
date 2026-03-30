@@ -30,6 +30,7 @@ type AsciiServices interface {
 	SaveAscii(ctx context.Context, text, banner, user_id string) *m.Error
 	DeleteAscii(ctx context.Context, id string) *m.Error
 	FilterAscii(w http.ResponseWriter, r *http.Request, key string) *m.Error
+	ClearAllSavedAscii(ctx context.Context, user_id string) *m.Error
 }
 
 type Handler struct {

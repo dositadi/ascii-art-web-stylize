@@ -23,6 +23,7 @@ type Repo interface {
 	GetAllUsersSavedAscii(ctx context.Context, user_id string) ([]m.Ascii, *m.Error)
 	DeleteFromAscii(ctx context.Context, user_id string) *m.Error
 	Filter(ctx context.Context, font, user_id string) ([]m.Ascii, *m.Error)
+	ClearAll(ctx context.Context, user_id string) *m.Error
 }
 
 type Transformer interface {

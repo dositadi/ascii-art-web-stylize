@@ -61,7 +61,7 @@ func (a *App) InitializeRoutes() {
 	a.Router.Handle("GET "+h.SHADOW_FILTER_ROUTE, mid.AuthenticateUser(http.HandlerFunc(handler.ShadowFilterHandler)))
 	a.Router.Handle("GET "+h.TINKERTOY_FILTER_ROUTE, mid.AuthenticateUser(http.HandlerFunc(handler.TinkertoyFilterHandler)))
 	a.Router.Handle("GET "+h.ALL_ASCII_FILTER_ROUTE, mid.AuthenticateUser(http.HandlerFunc(handler.AllFilterHandler)))
-	a.Router.Handle("GET "+h.CLEAR_ALL_ROUTE, mid.AuthenticateUser(http.HandlerFunc(handler.)))
+	a.Router.Handle("GET "+h.CLEAR_ALL_ROUTE, mid.AuthenticateUser(http.HandlerFunc(handler.ClearAllHandler)))
 
 	a.Router.HandleFunc("GET /health", handler.HealthCheckHandler)
 }

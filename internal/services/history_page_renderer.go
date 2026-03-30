@@ -60,6 +60,7 @@ func (s *Service) RenderHistoryPage(w http.ResponseWriter, r *http.Request) *m.E
 		ShadowFilterRoute    string
 		TinkertoyFilterRoute string
 		AllFilterRoute       string
+		ClearAllRoute        string
 	}{
 		AsciiArts:            asciiArts,
 		UserName:             userName,
@@ -73,6 +74,7 @@ func (s *Service) RenderHistoryPage(w http.ResponseWriter, r *http.Request) *m.E
 		ShadowFilterRoute:    h.SHADOW_FILTER_ROUTE,
 		TinkertoyFilterRoute: h.TINKERTOY_FILTER_ROUTE,
 		AllFilterRoute:       h.ALL_ASCII_FILTER_ROUTE,
+		ClearAllRoute:        h.CLEAR_ALL_ROUTE,
 	}
 
 	if s.GetHxRequestStatus(r) {
