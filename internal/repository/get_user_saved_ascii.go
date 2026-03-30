@@ -33,9 +33,7 @@ func (s *ServiceRepo) GetAllUsersSavedAscii(ctx context.Context, user_id string)
 				Code:    h.CONN_LOST_ERR_CODE,
 			}
 		}
-
 		asciiArts = append(asciiArts, asciiArt)
-		//fmt.Println("FORMATTED: ", asciiArt.CreatedAt.Format("02 Jan 2006 15:04"))
 	}
 
 	if err3 := rows.Err(); err3 != nil {

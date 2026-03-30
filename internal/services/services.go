@@ -19,8 +19,9 @@ type Repo interface {
 	PingDB() *m.Error
 
 	// Ascii table CRUD operations
-	InsertAscii(ctx context.Context, ascii m.Ascii, user_id string) *m.Error
+	InsertAscii(ctx context.Context, ascii m.Ascii) *m.Error
 	GetAllUsersSavedAscii(ctx context.Context, user_id string) ([]m.Ascii, *m.Error)
+	DeleteFromAscii(ctx context.Context, id string) *m.Error
 }
 
 type Transformer interface {

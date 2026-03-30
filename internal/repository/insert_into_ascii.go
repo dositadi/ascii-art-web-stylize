@@ -9,7 +9,7 @@ import (
 	h "acad.learn2earn.ng/git/dositadi/ascii-art-web-stylize/pkg/utils"
 )
 
-func (r *ServiceRepo) InsertAscii(ctx context.Context, ascii m.Ascii, user_id string) *m.Error {
+func (r *ServiceRepo) InsertAscii(ctx context.Context, ascii m.Ascii) *m.Error {
 	tx, err := r.DB.BeginTx(ctx, &sql.TxOptions{})
 	if err != nil {
 		if errors.Is(err, sql.ErrTxDone) {
@@ -21,7 +21,7 @@ func (r *ServiceRepo) InsertAscii(ctx context.Context, ascii m.Ascii, user_id st
 		}
 	}
 
-	exists, err2 := r.CheckIfAsciiExists(ctx, ascii.Id, user_id)
+	exists, err2 := r.CheckIfAsciiExists(ctx, ascii.Id)
 	if err2 != nil {
 		return err2
 	}

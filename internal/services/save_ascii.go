@@ -28,7 +28,7 @@ func (s *Service) SaveAscii(ctx context.Context, text, banner, user_id string) *
 		AsciiText: formattedAsciiWords,
 	}
 
-	err3 := s.Repository.InsertAscii(ctx, ascii, user_id)
+	err3 := s.Repository.InsertAscii(ctx, ascii)
 	if err3 != nil {
 		return err3
 	}

@@ -55,6 +55,7 @@ func (s *Service) RenderHistoryPage(w http.ResponseWriter, r *http.Request) *m.E
 		AboutRoute        string
 		HelpRoute         string
 		ContributorsRoute string
+		DeleteRoute       string
 	}{
 		AsciiArts:         asciiArts,
 		UserName:          userName,
@@ -63,6 +64,7 @@ func (s *Service) RenderHistoryPage(w http.ResponseWriter, r *http.Request) *m.E
 		AboutRoute:        h.ABOUT_US_ROUTE,
 		HelpRoute:         h.HELP_ROUTE,
 		ContributorsRoute: h.CONTRIBUTORS_ROUTE,
+		DeleteRoute:       h.DELETE_ROUTE,
 	}
 
 	if s.GetHxRequestStatus(r) {
