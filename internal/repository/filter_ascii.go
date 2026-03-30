@@ -19,6 +19,8 @@ func (r *ServiceRepo) Filter(ctx context.Context, font, user_id string) ([]m.Asc
 		}
 	}
 
+	defer rows.Close()
+
 	var asciiArts []m.Ascii
 
 	for rows.Next() {
