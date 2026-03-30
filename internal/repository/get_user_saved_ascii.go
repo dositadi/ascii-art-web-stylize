@@ -2,7 +2,6 @@ package repository
 
 import (
 	"context"
-	"fmt"
 
 	m "acad.learn2earn.ng/git/dositadi/ascii-art-web-stylize/pkg/models"
 	h "acad.learn2earn.ng/git/dositadi/ascii-art-web-stylize/pkg/utils"
@@ -10,7 +9,6 @@ import (
 
 func (s *ServiceRepo) GetAllUsersSavedAscii(ctx context.Context, user_id string) ([]m.Ascii, *m.Error) {
 	rows, err := s.DB.QueryContext(ctx, h.GET_ALL_USER_SAVED_ASCII, user_id)
-	fmt.Println(user_id)
 	if err != nil {
 		return nil, &m.Error{
 			Error:   h.CONN_LOST_ERR,

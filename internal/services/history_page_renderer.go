@@ -48,23 +48,31 @@ func (s *Service) RenderHistoryPage(w http.ResponseWriter, r *http.Request) *m.E
 	namePrefix := s.GetNamePrefix(userName)
 
 	historyPageDetail := struct {
-		AsciiArts         []m.Ascii
-		UserName          string
-		NamePrefix        string
-		AsciiRoute        string
-		AboutRoute        string
-		HelpRoute         string
-		ContributorsRoute string
-		DeleteRoute       string
+		AsciiArts            []m.Ascii
+		UserName             string
+		NamePrefix           string
+		AsciiRoute           string
+		AboutRoute           string
+		HelpRoute            string
+		ContributorsRoute    string
+		DeleteRoute          string
+		StandardFilterRoute  string
+		ShadowFilterRoute    string
+		TinkertoyFilterRoute string
+		AllFilterRoute       string
 	}{
-		AsciiArts:         asciiArts,
-		UserName:          userName,
-		NamePrefix:        namePrefix,
-		AsciiRoute:        h.ASCII_ROUTE,
-		AboutRoute:        h.ABOUT_US_ROUTE,
-		HelpRoute:         h.HELP_ROUTE,
-		ContributorsRoute: h.CONTRIBUTORS_ROUTE,
-		DeleteRoute:       h.DELETE_ROUTE,
+		AsciiArts:            asciiArts,
+		UserName:             userName,
+		NamePrefix:           namePrefix,
+		AsciiRoute:           h.ASCII_ROUTE,
+		AboutRoute:           h.ABOUT_US_ROUTE,
+		HelpRoute:            h.HELP_ROUTE,
+		ContributorsRoute:    h.CONTRIBUTORS_ROUTE,
+		DeleteRoute:          h.DELETE_ROUTE,
+		StandardFilterRoute:  h.STANDARD_FILTER_ROUTE,
+		ShadowFilterRoute:    h.SHADOW_FILTER_ROUTE,
+		TinkertoyFilterRoute: h.TINKERTOY_FILTER_ROUTE,
+		AllFilterRoute:       h.ALL_ASCII_FILTER_ROUTE,
 	}
 
 	if s.GetHxRequestStatus(r) {
@@ -84,6 +92,5 @@ func (s *Service) RenderHistoryPage(w http.ResponseWriter, r *http.Request) *m.E
 			}
 		}
 	}
-
 	return nil
 }

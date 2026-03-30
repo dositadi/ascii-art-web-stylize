@@ -67,13 +67,13 @@
   <!-- Filter bar -->
   <div class="filter-bar" role="toolbar" aria-label="Filter and sort">
 
-    <span class="filter-bar__label">filter:</span>
+    <span class="filter-bar__label">Filter:</span>
 
     <div class="filter-bar__group">
-      <a class="filter-btn filter-btn--active" href="#">All</a>
-      <a class="filter-btn" href="#">Standard</a>
-      <a class="filter-btn" href="#">Shadow</a>
-      <a class="filter-btn" href="#">Tinkertoy</a>
+      <a hx-get={{.AllFilterRoute}} hx-swap="innerHTML" hx-target="#history-tabs" class="filter-btn filter-btn--active">All</a>
+      <a hx-get={{.StandardFilterRoute}} hx-swap="innerHTML" hx-target="#history-tabs" class="filter-btn">Standard</a>
+      <a hx-get={{.ShadowFilterRoute}} hx-swap="innerHTML" hx-target="#history-tabs" class="filter-btn">Shadow</a>
+      <a hx-get={{.TinkertoyFilterRoute}} hx-swap="innerHTML" hx-target="#history-tabs" class="filter-btn">Tinkertoy</a>
      <!--  <a class="filter-btn" href="#">Digital</a>
       <a class="filter-btn" href="#">Double</a> -->
     </div>
@@ -89,53 +89,17 @@
 
   </div>
 
-
+  {{if len .AsciiArts | ne 0}}
   <!-- HISTORY LIST  (populated state)
        Remove this section and show
        .history-empty instead when empty.-->
-  <div class="history-list" aria-label="Saved banners">
+  <div id="history-tabs" class="history-list" aria-label="Saved banners">
 
     {{template "tabs" .}}
 
-    <!-- ── Pagination ── -->
-    <!--
-      CSS-only pagination using anchor links.
-      In production this is driven server-side.
-      The prev/next links point to the appropriate
-      server route (e.g. /history?page=2).
-    -->
-    <nav class="pagination" aria-label="History pagination">
-
-      <span class="pagination__info">Showing 1–4 of 6 banners</span>
-
-      <div class="pagination__controls">
-
-        <!-- Prev — disabled on page 1 -->
-        <a class="page-btn" href="#" aria-disabled="true" aria-label="Previous page">
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-            <path d="M9 3L5 7l4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-          Prev
-        </a>
-
-        <!-- Page numbers -->
-        <a class="page-btn page-btn--active" href="#" aria-current="page" aria-label="Page 1">1</a>
-        <a class="page-btn" href="#" aria-label="Page 2">2</a>
-
-        <!-- Next -->
-        <a class="page-btn" href="#" aria-label="Next page">
-          Next
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-            <path d="M5 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </a>
-
-      </div>
-    </nav>
-
   </div><!-- /.history-list -->
 
-
+  {{else}}
   <!--
     EMPTY STATE
     Show this instead of .history-list
@@ -143,7 +107,7 @@
     Remove the comment wrappers to activate.
   -->
   
-  <!-- <div class="history-empty" role="status" aria-label="No saved banners">
+  <div class="history-empty" role="status" aria-label="No saved banners">
 
     <div class="history-empty__icon" aria-hidden="true">
       <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
@@ -175,15 +139,15 @@
       </li>
     </ul>
 
-    <a class="history-empty__cta" href="ascii.html">
+    <a class="history-empty__cta" hx-get={{.AsciiRoute}}  hx-swap="innerHTML" hx-target="#body">
       <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
         <path d="M2 3.5h10M7 3.5v7M4.5 10.5h5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
       </svg>
       Go to the Forge
     </a>
 
-  </div> -->
- 
+  </div>
+  {{end}}
 
 </main><!-- /.page -->
 

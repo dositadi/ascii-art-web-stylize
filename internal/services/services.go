@@ -21,7 +21,8 @@ type Repo interface {
 	// Ascii table CRUD operations
 	InsertAscii(ctx context.Context, ascii m.Ascii) *m.Error
 	GetAllUsersSavedAscii(ctx context.Context, user_id string) ([]m.Ascii, *m.Error)
-	DeleteFromAscii(ctx context.Context, id string) *m.Error
+	DeleteFromAscii(ctx context.Context, user_id string) *m.Error
+	Filter(ctx context.Context, font, user_id string) ([]m.Ascii, *m.Error)
 }
 
 type Transformer interface {

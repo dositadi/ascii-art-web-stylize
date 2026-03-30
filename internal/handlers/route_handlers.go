@@ -29,6 +29,7 @@ type AsciiServices interface {
 	TransformText(w http.ResponseWriter, r *http.Request, text, banner string, start time.Time) *m.Error
 	SaveAscii(ctx context.Context, text, banner, user_id string) *m.Error
 	DeleteAscii(ctx context.Context, id string) *m.Error
+	FilterAscii(w http.ResponseWriter, r *http.Request, key string) *m.Error
 }
 
 type Handler struct {
