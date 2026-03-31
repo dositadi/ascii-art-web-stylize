@@ -44,7 +44,7 @@ func (s *Service) FilterAscii(w http.ResponseWriter, r *http.Request, font strin
 			}
 		}
 	} else {
-		asciiArts, err5 = s.Repository.GetAllUsersSavedAscii(r.Context(), user_id)
+		asciiArts, err5 = s.Repository.GetAllUsersSavedAscii(r.Context(), user_id, 1, 1)
 		if err5 != nil {
 			return &m.Error{
 				Error:   h.PAGE_PARSING_CODE,

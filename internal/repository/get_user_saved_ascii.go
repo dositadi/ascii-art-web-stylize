@@ -7,8 +7,8 @@ import (
 	h "acad.learn2earn.ng/git/dositadi/ascii-art-web-stylize/pkg/utils"
 )
 
-func (s *ServiceRepo) GetAllUsersSavedAscii(ctx context.Context, user_id string) ([]m.Ascii, *m.Error) {
-	rows, err := s.DB.QueryContext(ctx, h.GET_ALL_USER_SAVED_ASCII, user_id)
+func (s *ServiceRepo) GetAllUsersSavedAscii(ctx context.Context, user_id string, limit, offset int) ([]m.Ascii, *m.Error) {
+	rows, err := s.DB.QueryContext(ctx, h.GET_ALL_USER_SAVED_ASCII, user_id, limit, offset)
 	if err != nil {
 		return nil, &m.Error{
 			Error:   h.CONN_LOST_ERR,

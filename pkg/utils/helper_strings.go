@@ -59,6 +59,7 @@ const (
 	HOME_ROUTE             = "/home"
 	ASCII_ROUTE            = "/home/ascii-art"
 	HISTORY_ROUTE          = "/home/ascii-art/history"
+	HistoryQuery           = "?page=1"
 	ABOUT_US_ROUTE         = "/home#about"
 	CONTRIBUTORS_ROUTE     = "/home#contributors"
 	HELP_ROUTE             = "/home#help"
@@ -87,11 +88,12 @@ const (
 
 	// AsciiTexts Table
 	INSERT_INTO_ASCII_TEXTS  = "INSERT INTO ascii_outputs (id,user_id,input_text,font,ascii_text) VALUES (?,?,?,?,?)"
-	GET_ALL_USER_SAVED_ASCII = "SELECT id, input_text, font, ascii_text, created_at FROM ascii_outputs WHERE user_id=? ORDER BY created_at DESC LIMIT 5"
+	GET_ALL_USER_SAVED_ASCII = "SELECT id, input_text, font, ascii_text, created_at FROM ascii_outputs WHERE user_id=? ORDER BY created_at DESC LIMIT ? OFFSET ?"
 	CHECK_ASCII_EXISTS       = "SELECT EXISTS (SELECT 1 FROM ascii_outputs WHERE id=?)"
 	DELETE_ASCII             = "DELETE FROM ascii_outputs WHERE id=?"
 	FILTER_ASCII             = "SELECT id, input_text, font, ascii_text FROM ascii_outputs WHERE user_id=? AND font=?"
 	CLEAR_ALL_USER_DATA      = "DELETE FROM ascii_outputs WHERE user_id=?"
+	GET_TABLE_LENGHT         = "SELECT COUNT(*) FROM ascii_outputs"
 )
 
 // Ascii keys

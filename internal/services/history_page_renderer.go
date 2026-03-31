@@ -3,10 +3,17 @@ package services
 import (
 	"html/template"
 	"net/http"
+	"strconv"
 	"time"
 
 	m "acad.learn2earn.ng/git/dositadi/ascii-art-web-stylize/pkg/models"
 	h "acad.learn2earn.ng/git/dositadi/ascii-art-web-stylize/pkg/utils"
+)
+
+var (
+	count  int
+	reduce int
+	items  int
 )
 
 func (s *Service) RenderHistoryPage(w http.ResponseWriter, r *http.Request) *m.Error {
@@ -36,7 +43,30 @@ func (s *Service) RenderHistoryPage(w http.ResponseWriter, r *http.Request) *m.E
 		return err2
 	}
 
-	asciiArts, err5 := s.Repository.GetAllUsersSavedAscii(r.Context(), user_id)
+	length, err6 := s.Repository.GetTableLenght(r.Context())
+	if err6 != nil {
+		return err6
+	}
+
+	var next, prev int
+
+	page, _ := strconv.Atoi(r.URL.Query().Get("page"))
+
+	count = page
+	count++
+
+	limit := 2
+
+	next = count
+	reduce = page
+
+	reduce--
+
+	prev = reduce
+
+	offset := (page - 1) * limit
+
+	asciiArts, err5 := s.Repository.GetAllUsersSavedAscii(r.Context(), user_id, limit, offset)
 	if err5 != nil {
 		return &m.Error{
 			Error:   h.PAGE_PARSING_CODE,
@@ -45,9 +75,23 @@ func (s *Service) RenderHistoryPage(w http.ResponseWriter, r *http.Request) *m.E
 		}
 	}
 
+	items = page * len(asciiArts)
+
+	var disableNext, disablePrev bool
+	if len(asciiArts) < limit || items == length {
+		disableNext = true
+	}
+
 	namePrefix := s.GetNamePrefix(userName)
 
 	historyPageDetail := struct {
+		DisableNext          bool
+		DisablePrev          bool
+		PageRoute            string
+		PrevPageRoute        string
+		Next                 int
+		Page                 int
+		History              string
 		AsciiArts            []m.Ascii
 		UserName             string
 		NamePrefix           string
@@ -62,6 +106,11 @@ func (s *Service) RenderHistoryPage(w http.ResponseWriter, r *http.Request) *m.E
 		AllFilterRoute       string
 		ClearAllRoute        string
 	}{
+		DisableNext:          disableNext,
+		DisablePrev:          disablePrev,
+		PageRoute:            h.HISTORY_ROUTE + "?page=" + strconv.Itoa(next),
+		PrevPageRoute:        h.HISTORY_ROUTE + "?page=" + strconv.Itoa(prev),
+		Next:                 next,
 		AsciiArts:            asciiArts,
 		UserName:             userName,
 		NamePrefix:           namePrefix,

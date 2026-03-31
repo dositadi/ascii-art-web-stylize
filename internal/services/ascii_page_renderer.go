@@ -56,7 +56,7 @@ func (s *Service) RenderAsciiArtPage(w http.ResponseWriter, r *http.Request) *m.
 		BannerKey:         h.BANNER_KEY,
 		PostRoute:         h.ASCII_ROUTE,
 		RecievedOutput:    false,
-		ViewHistoryRoute:  h.HISTORY_ROUTE,
+		ViewHistoryRoute:  h.HISTORY_ROUTE + h.HistoryQuery,
 		AboutRoute:        h.ABOUT_US_ROUTE,
 		HelpRoute:         h.HELP_ROUTE,
 		ContributorsRoute: h.CONTRIBUTORS_ROUTE,

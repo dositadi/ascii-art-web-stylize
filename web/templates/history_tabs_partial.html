@@ -101,19 +101,14 @@
       <div class="pagination__controls">
 
         <!-- Prev — disabled on page 1 -->
-        <a class="page-btn" href="#" aria-disabled="true" aria-label="Previous page">
+        <a hx-get={{.PrevPageRoute}} hx-swap="innerHTML" hx-target="#body" hx-push-url="true" class="page-btn" {{if .DisablePrev}} aria-disabled="true" {{else}} aria-disabled="false" {{end}} aria-label="Previous page">
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
             <path d="M9 3L5 7l4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
           Prev
         </a>
 
-        <!-- Page numbers -->
-        <a class="page-btn page-btn--active" href="#" aria-current="page" aria-label="Page 1">1</a>
-        <a class="page-btn" href="#" aria-label="Page 2">2</a>
-
-        <!-- Next -->
-        <a class="page-btn" href="#" aria-label="Next page">
+        <a hx-get={{$.PageRoute}} hx-swap="innerHTML" hx-target="#body" hx-push-url="true" class="page-btn" {{if .DisableNext}} aria-disabled="true" {{else}} aria-disabled="false" {{end}} aria-label="Next page">
           Next
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
             <path d="M5 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
