@@ -73,6 +73,7 @@ const (
 	SHADOW_FILTER_ROUTE     = "/home/ascii-art/history/shadow-filter"
 	ALL_ASCII_FILTER_ROUTE  = "/home/ascii-art/history/all-filter"
 	CLEAR_ALL_ROUTE         = "/home/ascii-art/history/clear-all"
+	COPY_ASCII_ROUTE        = "/history/ascii-art/copy"
 )
 
 // Internal folder path

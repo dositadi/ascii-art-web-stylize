@@ -1,7 +1,6 @@
 package services
 
 import (
-	"fmt"
 	"html/template"
 	"net/http"
 	"strconv"
@@ -25,7 +24,6 @@ func (s *Service) RenderHistoryPage(w http.ResponseWriter, r *http.Request, font
 	}
 	temp, err := template.New("history.html").Funcs(funcMap).ParseFiles("web/static/internal_pages/history.html", "web/templates/history_partial.html", "web/templates/history_tabs_partial.html")
 	if err != nil {
-		fmt.Println(err.Error())
 		return &m.Error{
 			Error:   h.PAGE_PARSING_CODE,
 			Details: err.Error(),
@@ -42,7 +40,6 @@ func (s *Service) RenderHistoryPage(w http.ResponseWriter, r *http.Request, font
 
 	_, userName, _, err2 := s.Repository.GetHashedPasswordIDAndName(r.Context(), &user_id, nil)
 	if err2 != nil {
-		fmt.Println(err2.Details)
 		return err2
 	}
 
@@ -58,7 +55,6 @@ func (s *Service) RenderHistoryPage(w http.ResponseWriter, r *http.Request, font
 	}
 
 	if err6 != nil {
-		fmt.Println(err6.Details)
 		return err6
 	}
 
@@ -88,7 +84,6 @@ func (s *Service) RenderHistoryPage(w http.ResponseWriter, r *http.Request, font
 	}
 
 	if err5 != nil {
-		fmt.Println("Entered here: ", err5.Details)
 		return &m.Error{
 			Error:   h.PAGE_PARSING_CODE,
 			Details: err.Error(),
@@ -98,6 +93,8 @@ func (s *Service) RenderHistoryPage(w http.ResponseWriter, r *http.Request, font
 
 	items = page * len(asciiArts)
 
+	//start := (items - len(asciiArts)) + 1
+
 	var disableNext, disablePrev bool
 
 	if len(asciiArts) < limit || items == length {
@@ -106,6 +103,19 @@ func (s *Service) RenderHistoryPage(w http.ResponseWriter, r *http.Request, font
 
 	if page == 1 {
 		disablePrev = true
+	}
+
+	var fontQuery string
+
+	switch font {
+	case "all":
+		fontQuery = "?font=all"
+	case "standard":
+		fontQuery = "?font=standard"
+	case "shadow":
+		fontQuery = "?font=shadow"
+	case "thinkertoy":
+		fontQuery = "?font=thinkertoy"
 	}
 
 	historyPageDetail := struct {
@@ -127,11 +137,13 @@ func (s *Service) RenderHistoryPage(w http.ResponseWriter, r *http.Request, font
 		TinkertoyFilterRoute string
 		AllFilterRoute       string
 		ClearAllRoute        string
+		TotalBanner          string
+		//DisplayFeedback      string
 	}{
 		DisableNext:          disableNext,
 		DisablePrev:          disablePrev,
-		PageRoute:            h.HISTORY_ROUTE + "?font=all&page=" + strconv.Itoa(next),
-		PrevPageRoute:        h.HISTORY_ROUTE + "?font=all&page=" + strconv.Itoa(prev),
+		PageRoute:            h.HISTORY_ROUTE + fontQuery + "&page=" + strconv.Itoa(next),
+		PrevPageRoute:        h.HISTORY_ROUTE + fontQuery + "&page=" + strconv.Itoa(prev),
 		AsciiArts:            asciiArts,
 		UserName:             userName,
 		NamePrefix:           namePrefix,
@@ -145,11 +157,12 @@ func (s *Service) RenderHistoryPage(w http.ResponseWriter, r *http.Request, font
 		TinkertoyFilterRoute: h.HISTORY_ROUTE + h.TINKERTOY_HISTORY_QUERY,
 		AllFilterRoute:       h.HISTORY_ROUTE + h.ALL_HISTORY_QUERY,
 		ClearAllRoute:        h.CLEAR_ALL_ROUTE,
+		TotalBanner:          strconv.Itoa(length) + " banners saved",
+		//DisplayFeedback:      "showing " + strconv.Itoa(start) + "-" + strconv.Itoa(items) + " of " + strconv.Itoa(length) + " banners",
 	}
 
 	if s.GetHxRequestStatus(r) {
 		if err3 := temp.ExecuteTemplate(w, "history", historyPageDetail); err3 != nil {
-			fmt.Println(err3.Error())
 			return &m.Error{
 				Error:   h.PAGE_PARSING_CODE,
 				Details: err3.Error(),
@@ -158,7 +171,6 @@ func (s *Service) RenderHistoryPage(w http.ResponseWriter, r *http.Request, font
 		}
 	} else {
 		if err4 := temp.Execute(w, historyPageDetail); err4 != nil {
-			fmt.Println(err4.Error())
 			return &m.Error{
 				Error:   h.PAGE_PARSING_CODE,
 				Details: err4.Error(),

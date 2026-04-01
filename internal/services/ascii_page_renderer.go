@@ -43,6 +43,7 @@ func (s *Service) RenderAsciiArtPage(w http.ResponseWriter, r *http.Request) *m.
 		DownloadImgRoute  string
 		DownloadTxtRoute  string
 		SaveOutputRoute   string
+		CopyOutputRoute   string
 		ViewHistoryRoute  string
 		RecievedOutput    bool
 		AboutRoute        string
@@ -62,6 +63,7 @@ func (s *Service) RenderAsciiArtPage(w http.ResponseWriter, r *http.Request) *m.
 		ContributorsRoute: h.CONTRIBUTORS_ROUTE,
 		HomePageRoute:     h.HOME_ROUTE,
 		SaveOutputRoute:   h.SAVE_ASCII_ROUTE,
+		CopyOutputRoute:   h.COPY_ASCII_ROUTE,
 	}
 
 	if s.GetHxRequestStatus(r) {

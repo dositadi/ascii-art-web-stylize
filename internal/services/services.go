@@ -22,7 +22,6 @@ type Repo interface {
 	InsertAscii(ctx context.Context, ascii m.Ascii) *m.Error
 	GetAllUsersSavedAscii(ctx context.Context, user_id string, limit, offset int, font string) ([]m.Ascii, *m.Error)
 	DeleteFromAscii(ctx context.Context, user_id string) *m.Error
-	Filter(ctx context.Context, limit, offset int, font, user_id string) ([]m.Ascii, *m.Error)
 	ClearAll(ctx context.Context, user_id string) *m.Error
 	GetTableLenght(ctx context.Context, user_id, font string) (int, *m.Error)
 }
@@ -65,4 +64,20 @@ func (s *Service) GetNamePrefix(userName string) string {
 		}
 	}
 	return namesPrefix.String()
+}
+
+func (s *Service) FormatAscii(text, banner string) (string, *m.Error) {
+	latinWords, err := s.AsciiTransformer.SplitInputByNewline(text)
+	if err != nil {
+		return "", err
+	}
+
+	asciiWords, _, err2 := s.AsciiTransformer.ReadWords(latinWords, banner)
+	if err2 != nil {
+		return "", err2
+	}
+
+	formattedAsciiWords := s.AsciiTransformer.FormatAsciiWords(asciiWords)
+
+	return formattedAsciiWords, nil
 }

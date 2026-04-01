@@ -12,7 +12,7 @@ import (
 func (r *ServiceRepo) GetAllUsersSavedAscii(ctx context.Context, user_id string, limit, offset int, font string) ([]m.Ascii, *m.Error) {
 	var rows *sql.Rows
 	var err error
-
+                    
 	if font == "" {
 		rows, err = r.DB.QueryContext(ctx, h.GET_ALL_USER_SAVED_ASCII, user_id, limit, offset)
 		if err != nil {

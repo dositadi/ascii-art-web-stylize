@@ -57,11 +57,8 @@ func (a *App) InitializeRoutes() {
 	a.Router.HandleFunc("POST "+h.ASCII_ROUTE, handler.TransformTextHandler)
 	a.Router.Handle("POST "+h.SAVE_ASCII_ROUTE, mid.AuthenticateUser(http.HandlerFunc(handler.SaveAsciiHandler)))
 	a.Router.Handle("DELETE "+h.DELETE_ROUTE, mid.AuthenticateUser(http.HandlerFunc(handler.DeleteAsciiHandler)))
-	a.Router.Handle("GET "+h.STANDARD_FILTER_ROUTE, mid.AuthenticateUser(http.HandlerFunc(handler.StandardFilterHandler)))
-	a.Router.Handle("GET "+h.SHADOW_FILTER_ROUTE, mid.AuthenticateUser(http.HandlerFunc(handler.ShadowFilterHandler)))
-	a.Router.Handle("GET "+h.TINKERTOY_FILTER_ROUTE, mid.AuthenticateUser(http.HandlerFunc(handler.TinkertoyFilterHandler)))
-	a.Router.Handle("GET "+h.ALL_ASCII_FILTER_ROUTE, mid.AuthenticateUser(http.HandlerFunc(handler.AllFilterHandler)))
 	a.Router.Handle("GET "+h.CLEAR_ALL_ROUTE, mid.AuthenticateUser(http.HandlerFunc(handler.ClearAllHandler)))
+	a.Router.Handle("POST "+h.COPY_ASCII_ROUTE, mid.AuthenticateUser(http.HandlerFunc(handler.CopyHandler)))
 
 	a.Router.HandleFunc("GET /health", handler.HealthCheckHandler)
 }
@@ -95,7 +92,7 @@ func (a *App) Run() {
 	}
 
 	server := http.Server{
-		Addr:              ":8081",
+		Addr:              ":8082",
 		Handler:           a.Router,
 		WriteTimeout:      10 * time.Second,
 		IdleTimeout:       10 * time.Second,

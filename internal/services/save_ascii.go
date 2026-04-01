@@ -8,17 +8,10 @@ import (
 )
 
 func (s *Service) SaveAscii(ctx context.Context, text, banner, user_id string) *m.Error {
-	latinWords, err := s.AsciiTransformer.SplitInputByNewline(text)
+	formattedAsciiWords, err := s.FormatAscii(text, banner)
 	if err != nil {
 		return err
 	}
-
-	asciiWords, _, err2 := s.AsciiTransformer.ReadWords(latinWords, banner)
-	if err2 != nil {
-		return err2
-	}
-
-	formattedAsciiWords := s.AsciiTransformer.FormatAsciiWords(asciiWords)
 
 	ascii := m.Ascii{
 		Id:        uuid.NewString(),

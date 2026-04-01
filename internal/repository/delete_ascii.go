@@ -14,7 +14,7 @@ func (r *ServiceRepo) DeleteFromAscii(ctx context.Context, id string) *m.Error {
 		return &m.Error{
 			Error:   h.SERVER_ERR,
 			Details: err.Error(),
-			Code:    h.SERVER_ERR_CODE,
+			Code:    h.SERVER_ERR_CODE,        
 		}
 	}
 

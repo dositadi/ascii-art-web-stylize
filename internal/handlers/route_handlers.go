@@ -29,8 +29,8 @@ type AsciiServices interface {
 	TransformText(w http.ResponseWriter, r *http.Request, text, banner string, start time.Time) *m.Error
 	SaveAscii(ctx context.Context, text, banner, user_id string) *m.Error
 	DeleteAscii(ctx context.Context, id string) *m.Error
-	//FilterAscii(w http.ResponseWriter, r *http.Request, key string) *m.Error
 	ClearAllSavedAscii(ctx context.Context, user_id string) *m.Error
+	CopyAscii(w http.ResponseWriter, r *http.Request) *m.Error
 }
 
 type Handler struct {
@@ -60,4 +60,13 @@ func (s *Handler) HealthCheckHandler(w http.ResponseWriter, r *http.Request) {
 	}
 	w.WriteHeader(http.StatusOK)
 	w.Write([]byte("Connection to Db is successful."))
+}
+
+func (h *Handler) GetUserID(r *http.Request) string {
+	val := r.Context().Value("user_id")
+
+	if id, ok := val.(string); ok {
+		return id
+	}
+	return ""
 }

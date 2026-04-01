@@ -96,9 +96,9 @@
     -->
     <nav class="pagination" aria-label="History pagination">
 
-      <span class="pagination__info">Showing 1–4 of 6 banners</span>
+      <span class="pagination__info">{{.DisplayFeedback}}</span>
 
-      <div class="pagination__controls">
+      <div class="pagination__controls">                               
 
         <!-- Prev — disabled on page 1 -->
         <a hx-get={{.PrevPageRoute}} hx-swap="innerHTML" hx-target="#body" hx-push-url="true" class="page-btn" {{if .DisablePrev}} aria-disabled="true" {{else}} aria-disabled="false" {{end}} aria-label="Previous page">
@@ -114,7 +114,6 @@
             <path d="M5 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </a>
-
       </div>
     </nav>
 {{end}}
