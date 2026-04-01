@@ -1,8 +1,9 @@
 package handlers
 
 import (
-	"fmt"
 	"net/http"
+
+	u "acad.learn2earn.ng/git/dositadi/ascii-art-web-stylize/pkg/utils"
 )
 
 func (h *Handler) DeleteAsciiHandler(w http.ResponseWriter, r *http.Request) {
@@ -11,13 +12,8 @@ func (h *Handler) DeleteAsciiHandler(w http.ResponseWriter, r *http.Request) {
 	err := h.Service.DeleteAscii(r.Context(), id)
 	if err != nil {
 		http.Error(w, err.Details, http.StatusInternalServerError)
-		fmt.Println(err)
 		return
 	}
 
-	err2 := h.Service.RenderHistoryPage(w, r)
-	if err != nil {
-		http.Error(w, err2.Details, http.StatusInternalServerError)
-		return
-	}
+	w.Header().Set("HX-Redirect", u.HISTORY_ROUTE+u.ALL_HISTORY_QUERY)
 }

@@ -53,23 +53,26 @@ const (
 
 // Request routes
 const (
-	LOGIN_ROUTE            = "/auth/login"
-	SIGNUP_ROUTE           = "/auth/register"
-	WELCOME_ROUTE          = "/"
-	HOME_ROUTE             = "/home"
-	ASCII_ROUTE            = "/home/ascii-art"
-	HISTORY_ROUTE          = "/home/ascii-art/history"
-	HistoryQuery           = "?page=1"
-	ABOUT_US_ROUTE         = "/home#about"
-	CONTRIBUTORS_ROUTE     = "/home#contributors"
-	HELP_ROUTE             = "/home#help"
-	SAVE_ASCII_ROUTE       = "/home/ascii-art/save"
-	DELETE_ROUTE           = "/home/ascii-art/delete"
-	STANDARD_FILTER_ROUTE  = "/home/ascii-art/history/standard-filter"
-	TINKERTOY_FILTER_ROUTE = "/home/ascii-art/history/tinkertoy-filter"
-	SHADOW_FILTER_ROUTE    = "/home/ascii-art/history/shadow-filter"
-	ALL_ASCII_FILTER_ROUTE = "/home/ascii-art/history/all-filter"
-	CLEAR_ALL_ROUTE        = "/home/ascii-art/history/clear-all"
+	LOGIN_ROUTE             = "/auth/login"
+	SIGNUP_ROUTE            = "/auth/register"
+	WELCOME_ROUTE           = "/"
+	HOME_ROUTE              = "/home"
+	ASCII_ROUTE             = "/home/ascii-art"
+	HISTORY_ROUTE           = "/home/ascii-art/history"
+	ALL_HISTORY_QUERY       = "?font=all&page=1"
+	STANDARD_HISTORY_QUERY  = "?font=standard&page=1"
+	SHADOW_HISTORY_QUERY    = "?font=shadow&page=1"
+	TINKERTOY_HISTORY_QUERY = "?font=thinkertoy&page=1"
+	ABOUT_US_ROUTE          = "/home#about"
+	CONTRIBUTORS_ROUTE      = "/home#contributors"
+	HELP_ROUTE              = "/home#help"
+	SAVE_ASCII_ROUTE        = "/home/ascii-art/save"
+	DELETE_ROUTE            = "/home/ascii-art/delete"
+	STANDARD_FILTER_ROUTE   = "/home/ascii-art/history/standard-filter"
+	TINKERTOY_FILTER_ROUTE  = "/home/ascii-art/history/tinkertoy-filter"
+	SHADOW_FILTER_ROUTE     = "/home/ascii-art/history/shadow-filter"
+	ALL_ASCII_FILTER_ROUTE  = "/home/ascii-art/history/all-filter"
+	CLEAR_ALL_ROUTE         = "/home/ascii-art/history/clear-all"
 )
 
 // Internal folder path
@@ -87,13 +90,14 @@ const (
 	GET_HPASS_ID_AND_NAME_WITH_ID    = "SELECT id, name, hashed_password FROM users WHERE id=? LIMIT 1"
 
 	// AsciiTexts Table
-	INSERT_INTO_ASCII_TEXTS  = "INSERT INTO ascii_outputs (id,user_id,input_text,font,ascii_text) VALUES (?,?,?,?,?)"
-	GET_ALL_USER_SAVED_ASCII = "SELECT id, input_text, font, ascii_text, created_at FROM ascii_outputs WHERE user_id=? ORDER BY created_at DESC LIMIT ? OFFSET ?"
-	CHECK_ASCII_EXISTS       = "SELECT EXISTS (SELECT 1 FROM ascii_outputs WHERE id=?)"
-	DELETE_ASCII             = "DELETE FROM ascii_outputs WHERE id=?"
-	FILTER_ASCII             = "SELECT id, input_text, font, ascii_text FROM ascii_outputs WHERE user_id=? AND font=?"
-	CLEAR_ALL_USER_DATA      = "DELETE FROM ascii_outputs WHERE user_id=?"
-	GET_TABLE_LENGHT         = "SELECT COUNT(*) FROM ascii_outputs"
+	INSERT_INTO_ASCII_TEXTS    = "INSERT INTO ascii_outputs (id,user_id,input_text,font,ascii_text) VALUES (?,?,?,?,?)"
+	GET_ALL_USER_SAVED_ASCII   = "SELECT id, input_text, font, ascii_text, created_at FROM ascii_outputs WHERE user_id=? ORDER BY created_at DESC LIMIT ? OFFSET ?"
+	CHECK_ASCII_EXISTS         = "SELECT EXISTS (SELECT 1 FROM ascii_outputs WHERE id=?)"
+	DELETE_ASCII               = "DELETE FROM ascii_outputs WHERE id=?"
+	FILTER_ASCII               = "SELECT id, input_text, font, ascii_text, created_at FROM ascii_outputs WHERE user_id=? AND font=? ORDER BY created_at DESC LIMIT ? OFFSET ?"
+	CLEAR_ALL_USER_DATA        = "DELETE FROM ascii_outputs WHERE user_id=?"
+	GET_TABLE_LENGHT_WITH_FONT = "SELECT COUNT(*) FROM ascii_outputs WHERE user_id=? AND font=?"
+	GET_TABLE_LENGHT           = "SELECT COUNT(*) FROM ascii_outputs WHERE user_id=?"
 )
 
 // Ascii keys

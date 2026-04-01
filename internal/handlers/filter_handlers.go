@@ -5,7 +5,8 @@ import (
 )
 
 func (h *Handler) StandardFilterHandler(w http.ResponseWriter, r *http.Request) {
-	err := h.Service.FilterAscii(w, r, "standard")
+	font := "standard"
+	err := h.Service.RenderHistoryPage(w, r, font)
 	if err != nil {
 		http.Error(w, err.Details, http.StatusInternalServerError)
 		return
@@ -13,7 +14,8 @@ func (h *Handler) StandardFilterHandler(w http.ResponseWriter, r *http.Request) 
 }
 
 func (h *Handler) ShadowFilterHandler(w http.ResponseWriter, r *http.Request) {
-	err := h.Service.FilterAscii(w, r, "shadow")
+	font := "shadow"
+	err := h.Service.RenderHistoryPage(w, r, font)
 	if err != nil {
 		http.Error(w, err.Details, http.StatusInternalServerError)
 		return
@@ -21,7 +23,8 @@ func (h *Handler) ShadowFilterHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func (h *Handler) TinkertoyFilterHandler(w http.ResponseWriter, r *http.Request) {
-	err := h.Service.FilterAscii(w, r, "thinkertoy")
+	font := "thinkertoy"
+	err := h.Service.RenderHistoryPage(w, r, font)
 	if err != nil {
 		http.Error(w, err.Details, http.StatusInternalServerError)
 		return
@@ -29,7 +32,8 @@ func (h *Handler) TinkertoyFilterHandler(w http.ResponseWriter, r *http.Request)
 }
 
 func (h *Handler) AllFilterHandler(w http.ResponseWriter, r *http.Request) {
-	err := h.Service.FilterAscii(w, r, "all")
+	font := "all"
+	err := h.Service.RenderHistoryPage(w, r, font)
 	if err != nil {
 		http.Error(w, err.Details, http.StatusInternalServerError)
 		return

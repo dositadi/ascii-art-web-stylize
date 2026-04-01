@@ -11,7 +11,7 @@ func (h *Handler) ClearAllHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	err2 := h.Service.RenderHistoryPage(w, r)
+	err2 := h.Service.RenderHistoryPage(w, r, "")
 	if err2 != nil {
 		http.Error(w, err2.Details, http.StatusInternalServerError)
 		return

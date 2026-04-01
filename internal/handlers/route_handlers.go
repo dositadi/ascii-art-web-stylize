@@ -20,7 +20,7 @@ type AsciiServices interface {
 	RenderLoginPage(w http.ResponseWriter, r *http.Request, message *string) *m.Error
 	RenderSignupPage(w http.ResponseWriter, r *http.Request, message *string) *m.Error
 	RenderHomePage(w http.ResponseWriter, r *http.Request) *m.Error
-	RenderHistoryPage(w http.ResponseWriter, r *http.Request) *m.Error
+	RenderHistoryPage(w http.ResponseWriter, r *http.Request, font string) *m.Error
 
 	// Render HTML partials function
 	//RenderAsciiPlaceholder(w http.ResponseWriter, r *http.Request) *m.Error
@@ -29,7 +29,7 @@ type AsciiServices interface {
 	TransformText(w http.ResponseWriter, r *http.Request, text, banner string, start time.Time) *m.Error
 	SaveAscii(ctx context.Context, text, banner, user_id string) *m.Error
 	DeleteAscii(ctx context.Context, id string) *m.Error
-	FilterAscii(w http.ResponseWriter, r *http.Request, key string) *m.Error
+	//FilterAscii(w http.ResponseWriter, r *http.Request, key string) *m.Error
 	ClearAllSavedAscii(ctx context.Context, user_id string) *m.Error
 }
 

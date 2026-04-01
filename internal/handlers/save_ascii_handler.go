@@ -29,5 +29,5 @@ func (h *Handler) SaveAsciiHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	w.Header().Set("HX-Redirect", u.HISTORY_ROUTE+u.HistoryQuery)
+	w.Header().Set("HX-Redirect", u.HISTORY_ROUTE+u.ALL_HISTORY_QUERY)
 }

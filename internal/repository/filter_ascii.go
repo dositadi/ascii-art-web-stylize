@@ -9,8 +9,9 @@ import (
 	h "acad.learn2earn.ng/git/dositadi/ascii-art-web-stylize/pkg/utils"
 )
 
-func (r *ServiceRepo) Filter(ctx context.Context, font, user_id string) ([]m.Ascii, *m.Error) {
-	rows, err := r.DB.QueryContext(ctx, h.FILTER_ASCII, user_id, font)
+func (r *ServiceRepo) Filter(ctx context.Context, limit, offset int, font, user_id string) ([]m.Ascii, *m.Error) {
+	rows, err := r.DB.QueryContext(ctx, h.FILTER_ASCII, user_id, font, limit, offset)
+
 	if err != nil {
 		return nil, &m.Error{
 			Error:   h.SERVER_ERR,
