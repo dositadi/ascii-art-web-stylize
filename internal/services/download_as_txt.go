@@ -26,6 +26,7 @@ func (s *Service) DownloadAsTxt(w http.ResponseWriter, text, font string) *m.Err
 	w.Header().Set("Content-Disposition", attachment)
 	w.Header().Set("Content-Type", "text/plain")
 	w.Header().Set("Content-Length", strconv.Itoa(len(formattedAscii)))
+	//w.Header().Set("HX-Reswap", "none")
 
 	_, err2 := io.Copy(w, strings.NewReader(formattedAscii))
 	if err2 != nil {

@@ -75,6 +75,7 @@ const (
 	CLEAR_ALL_ROUTE             = "/home/ascii-art/history/clear-all"
 	COPY_ASCII_ROUTE            = "/history/ascii-art/copy"
 	DOWNLOAD_ASCII_AS_TXT_ROUTE = "/home/ascii-art/download-txt"
+	BEGIN_DOWNLOAD_TXT          = "/home/ascii-art/begin-download"
 )
 
 // Internal folder path

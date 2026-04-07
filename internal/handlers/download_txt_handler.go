@@ -1,15 +1,15 @@
 package handlers
 
 import (
+	"fmt"
 	"net/http"
-
-	u "acad.learn2earn.ng/git/dositadi/ascii-art-web-stylize/pkg/utils"
 )
 
 func (h *Handler) DownloadAsciiTxtHandler(w http.ResponseWriter, r *http.Request) {
-	text := r.FormValue(u.TEXT_KEY)
-	font := r.FormValue(u.BANNER_KEY)
+	text := r.URL.Query().Get("text")
+	font := r.URL.Query().Get("font")
 
+	fmt.Println(text, font)
 	err := h.Service.DownloadAsTxt(w, text, font)
 	if err != nil {
 		http.Error(w, err.Details, http.StatusInternalServerError)

@@ -200,49 +200,6 @@
         <span id="copy">Copy</span>
       </button>
 
-      <!-- Download dropdown -->
-      <div class="dropdown">
-        <input type="checkbox" class="dropdown__toggle" id="dl-toggle" />
-        <label class="dropdown__btn" for="dl-toggle">
-          <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
-            <path d="M6.5 2v7M3.5 6.5l3 3 3-3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M2 10.5h9" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
-          </svg>
-          <span>Download</span>
-          <svg class="dropdown__caret" width="10" height="6" viewBox="0 0 10 6" fill="none">
-            <path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </label>
-        <div class="dropdown__menu">
-          <a class="dropdown__item dropdown__item--img">
-            <div class="dropdown__item-icon">
-              <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
-                <rect x="1.5" y="2.5" width="10" height="8" rx="1.5" stroke="currentColor" stroke-width="1.2"/>
-                <path d="M1.5 8.5l3-2.5 2 2 2-3 3 3.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
-                <circle cx="4.5" cy="5" r="1" fill="currentColor"/>
-              </svg>
-            </div>
-            <div class="dropdown__item-meta">
-              <span class="dropdown__item-name">As Image</span>
-              <span class="dropdown__item-ext">.png</span>
-            </div>
-          </a>
-          <a hx-post={{.DownloadTxtRoute}} hx-include="#banner-text, #banner" hx-swap="none" hx-boost="false" class="dropdown__item dropdown__item--txt">
-            <div class="dropdown__item-icon">
-              <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
-                <path d="M3 1.5h5l3 3V11a1 1 0 01-1 1H3a1 1 0 01-1-1V2.5a1 1 0 011-1z" stroke="currentColor" stroke-width="1.2"/>
-                <path d="M8 1.5V5h3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M4.5 7.5h4M4.5 9.5h2.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
-              </svg>
-            </div>
-            <div class="dropdown__item-meta">
-              <span class="dropdown__item-name">As Text</span>
-              <span class="dropdown__item-ext">.txt</span>
-            </div>
-          </a>
-        </div>
-      </div><!-- /.dropdown -->
-
       <div class="toolbar-sep"></div>
 
       <!-- Share -->

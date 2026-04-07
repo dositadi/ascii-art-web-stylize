@@ -64,7 +64,7 @@ func (s *Service) RenderAsciiArtPage(w http.ResponseWriter, r *http.Request) *m.
 		HomePageRoute:     h.HOME_ROUTE,
 		SaveOutputRoute:   h.SAVE_ASCII_ROUTE,
 		CopyOutputRoute:   h.COPY_ASCII_ROUTE,
-		DownloadTxtRoute:  h.DOWNLOAD_ASCII_AS_TXT_ROUTE,
+		DownloadTxtRoute:  h.BEGIN_DOWNLOAD_TXT,
 	}
 
 	if s.GetHxRequestStatus(r) {
