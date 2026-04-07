@@ -31,6 +31,7 @@ type AsciiServices interface {
 	DeleteAscii(ctx context.Context, id string) *m.Error
 	ClearAllSavedAscii(ctx context.Context, user_id string) *m.Error
 	CopyAscii(w http.ResponseWriter, r *http.Request) *m.Error
+	DownloadAsTxt(w http.ResponseWriter, text, font string) *m.Error
 }
 
 type Handler struct {

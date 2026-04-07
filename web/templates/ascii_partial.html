@@ -214,7 +214,7 @@
           </svg>
         </label>
         <div class="dropdown__menu">
-          <a class="dropdown__item dropdown__item--img" href="#">
+          <a class="dropdown__item dropdown__item--img">
             <div class="dropdown__item-icon">
               <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
                 <rect x="1.5" y="2.5" width="10" height="8" rx="1.5" stroke="currentColor" stroke-width="1.2"/>
@@ -227,7 +227,7 @@
               <span class="dropdown__item-ext">.png</span>
             </div>
           </a>
-          <a class="dropdown__item dropdown__item--txt" href="#">
+          <a hx-post={{.DownloadTxtRoute}} hx-include="#banner-text, #banner" hx-swap="none" hx-boost="false" class="dropdown__item dropdown__item--txt">
             <div class="dropdown__item-icon">
               <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
                 <path d="M3 1.5h5l3 3V11a1 1 0 01-1 1H3a1 1 0 01-1-1V2.5a1 1 0 011-1z" stroke="currentColor" stroke-width="1.2"/>

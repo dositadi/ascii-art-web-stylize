@@ -59,6 +59,7 @@ func (a *App) InitializeRoutes() {
 	a.Router.Handle("DELETE "+h.DELETE_ROUTE, mid.AuthenticateUser(http.HandlerFunc(handler.DeleteAsciiHandler)))
 	a.Router.Handle("GET "+h.CLEAR_ALL_ROUTE, mid.AuthenticateUser(http.HandlerFunc(handler.ClearAllHandler)))
 	a.Router.Handle("POST "+h.COPY_ASCII_ROUTE, mid.AuthenticateUser(http.HandlerFunc(handler.CopyHandler)))
+	a.Router.Handle("POST "+h.DOWNLOAD_ASCII_AS_TXT_ROUTE, mid.AuthenticateUser(http.HandlerFunc(handler.DownloadAsciiTxtHandler)))
 
 	a.Router.HandleFunc("GET /health", handler.HealthCheckHandler)
 }
