@@ -36,6 +36,5 @@ func (s *Service) DownloadAsTxt(w http.ResponseWriter, text, font string) *m.Err
 			Code:    h.SERVER_ERR_CODE,
 		}
 	}
-	fmt.Println("Done")
 	return nil
 }
