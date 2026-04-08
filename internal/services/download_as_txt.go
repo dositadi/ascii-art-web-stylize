@@ -12,7 +12,7 @@ import (
 	"github.com/google/uuid"
 )
 
-func (s *Service) DownloadAsTxt(w http.ResponseWriter, text, font string) *m.Error {
+func (s *Service) DownloadAsTxt(w http.ResponseWriter, r *http.Request, text, font, id string) *m.Error {
 	formattedAscii, err := s.FormatAscii(text, font)
 	fmt.Println(font, text)
 	if err != nil {
@@ -35,6 +35,12 @@ func (s *Service) DownloadAsTxt(w http.ResponseWriter, text, font string) *m.Err
 			Details: err2.Error(),
 			Code:    h.SERVER_ERR_CODE,
 		}
+	}
+
+	err3 := s.Repository.UpdateAsciiOutputsTable(r.Context(), id, h.DOWNLOAD_ASCII_AS_TXT_COL)
+	if err3 != nil {
+		fmt.Println(err3.Details)
+		return err3
 	}
 	return nil
 }

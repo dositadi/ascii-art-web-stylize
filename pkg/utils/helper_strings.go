@@ -93,18 +93,20 @@ const (
 	GET_HPASS_ID_AND_NAME_WITH_ID    = "SELECT id, name, hashed_password FROM users WHERE id=? LIMIT 1"
 
 	// AsciiTexts Table
-	INSERT_INTO_ASCII_TEXTS    = "INSERT INTO ascii_outputs (id,user_id,input_text,font,ascii_text) VALUES (?,?,?,?,?)"
-	GET_ALL_USER_SAVED_ASCII   = "SELECT id, input_text, font, ascii_text, created_at FROM ascii_outputs WHERE user_id=? ORDER BY created_at DESC LIMIT ? OFFSET ?"
-	CHECK_ASCII_EXISTS         = "SELECT EXISTS (SELECT 1 FROM ascii_outputs WHERE id=?)"
-	DELETE_ASCII               = "DELETE FROM ascii_outputs WHERE id=?"
-	FILTER_ASCII               = "SELECT id, input_text, font, ascii_text, created_at FROM ascii_outputs WHERE user_id=? AND font=? ORDER BY created_at DESC LIMIT ? OFFSET ?"
-	CLEAR_ALL_USER_DATA        = "DELETE FROM ascii_outputs WHERE user_id=?"
-	GET_TABLE_LENGHT_WITH_FONT = "SELECT COUNT(*) FROM ascii_outputs WHERE user_id=? AND font=?"
-	GET_TABLE_LENGHT           = "SELECT COUNT(*) FROM ascii_outputs WHERE user_id=?"
+	INSERT_INTO_ASCII_TEXTS      = "INSERT INTO ascii_outputs (id,user_id,input_text,font,ascii_text) VALUES (?,?,?,?,?)"
+	GET_ALL_USER_SAVED_ASCII     = "SELECT id, input_text, font, ascii_text, created_at FROM ascii_outputs WHERE user_id=? ORDER BY created_at DESC LIMIT ? OFFSET ?"
+	CHECK_ASCII_EXISTS           = "SELECT EXISTS (SELECT 1 FROM ascii_outputs WHERE id=?)"
+	DELETE_ASCII                 = "DELETE FROM ascii_outputs WHERE id=?"
+	FILTER_ASCII                 = "SELECT id, input_text, font, ascii_text, created_at FROM ascii_outputs WHERE user_id=? AND font=? ORDER BY created_at DESC LIMIT ? OFFSET ?"
+	CLEAR_ALL_USER_DATA          = "DELETE FROM ascii_outputs WHERE user_id=?"
+	GET_TABLE_LENGHT_WITH_FONT   = "SELECT COUNT(*) FROM ascii_outputs WHERE user_id=? AND font=?"
+	GET_TABLE_LENGHT             = "SELECT COUNT(*) FROM ascii_outputs WHERE user_id=?"
+	UPDATE_ASCII_DOWNLOAD_AS_TXT = "UPDATE ascii_outputs SET downloaded_as_txt = true where id = ?"
 )
 
 // Ascii keys
 const (
-	TEXT_KEY   = "text"
-	BANNER_KEY = "banner"
+	TEXT_KEY                  = "text"
+	BANNER_KEY                = "banner"
+	DOWNLOAD_ASCII_AS_TXT_COL = "downloaded_as_txt"
 )
