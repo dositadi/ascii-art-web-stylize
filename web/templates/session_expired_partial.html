@@ -1,0 +1,122 @@
+{{define "session-expired"}}
+
+<header class="topbar">
+  <div class="topbar__inner">
+    <a class="logo" href="home.html" aria-label="ASCIIForge home">
+      <div class="logo__icon" aria-hidden="true"><span>A_</span></div>
+      <div class="logo__name">ASCIIForge<sub>app</sub></div>
+    </a>
+  </div>
+</header>
+
+
+<!--PAGE -->
+<main class="page" id="main-content">
+
+  <!-- Decorative ASCII background -->
+   
+  <div class="page__bg" aria-hidden="true">
+    <div class="page__bg-row"><span>TOKEN_EXPIRED · SESSION_TIMEOUT · AUTH_REQUIRED · REDIRECT · TOKEN_EXPIRED · SESSION_TIMEOUT · AUTH_REQUIRED · REDIRECT · TOKEN_EXPIRED · SESSION_TIMEOUT · AUTH_REQUIRED · REDIRECT ·</span></div>
+    <div class="page__bg-row"><span>· REFRESH_TOKEN · SIGN_IN · ACCESS_DENIED · SESSION_END · REFRESH_TOKEN · SIGN_IN · ACCESS_DENIED · SESSION_END · REFRESH_TOKEN · SIGN_IN · ACCESS_DENIED · SESSION_END · REFRESH_TOKEN ·</span></div>
+    <div class="page__bg-row"><span>AUTH_REQUIRED · REDIRECT · TOKEN_EXPIRED · SESSION_TIMEOUT · AUTH_REQUIRED · REDIRECT · TOKEN_EXPIRED · SESSION_TIMEOUT · AUTH_REQUIRED · REDIRECT · TOKEN_EXPIRED · SESSION_TIMEOUT ·</span></div>
+    <div class="page__bg-row"><span>· SESSION_END · REFRESH_TOKEN · SIGN_IN · ACCESS_DENIED · SESSION_END · REFRESH_TOKEN · SIGN_IN · ACCESS_DENIED · SESSION_END · REFRESH_TOKEN · SIGN_IN · ACCESS_DENIED · SESSION_END ·</span></div>
+    <div class="page__bg-row"><span>TOKEN_EXPIRED · AUTH_REQUIRED · REDIRECT · SESSION_TIMEOUT · TOKEN_EXPIRED · AUTH_REQUIRED · REDIRECT · SESSION_TIMEOUT · TOKEN_EXPIRED · AUTH_REQUIRED · REDIRECT · SESSION_TIMEOUT ·</span></div>
+    <div class="page__bg-row"><span>· SIGN_IN · ACCESS_DENIED · SESSION_END · REFRESH_TOKEN · SIGN_IN · ACCESS_DENIED · SESSION_END · REFRESH_TOKEN · SIGN_IN · ACCESS_DENIED · SESSION_END · REFRESH_TOKEN · SIGN_IN ·</span></div>
+    <div class="page__bg-row"><span>REDIRECT · TOKEN_EXPIRED · SESSION_TIMEOUT · AUTH_REQUIRED · REDIRECT · TOKEN_EXPIRED · SESSION_TIMEOUT · AUTH_REQUIRED · REDIRECT · TOKEN_EXPIRED · SESSION_TIMEOUT · AUTH_REQUIRED ·</span></div>
+    <div class="page__bg-row"><span>· ACCESS_DENIED · SESSION_END · REFRESH_TOKEN · SIGN_IN · ACCESS_DENIED · SESSION_END · REFRESH_TOKEN · SIGN_IN · ACCESS_DENIED · SESSION_END · REFRESH_TOKEN · SIGN_IN · ACCESS_DENIED ·</span></div>
+    <div class="page__bg-row"><span>SESSION_TIMEOUT · AUTH_REQUIRED · REDIRECT · TOKEN_EXPIRED · SESSION_TIMEOUT · AUTH_REQUIRED · REDIRECT · TOKEN_EXPIRED · SESSION_TIMEOUT · AUTH_REQUIRED · REDIRECT · TOKEN_EXPIRED ·</span></div>
+    <div class="page__bg-row"><span>· REFRESH_TOKEN · SIGN_IN · ACCESS_DENIED · SESSION_END · REFRESH_TOKEN · SIGN_IN · ACCESS_DENIED · SESSION_END · REFRESH_TOKEN · SIGN_IN · ACCESS_DENIED · SESSION_END · REFRESH_TOKEN ·</span></div>
+    <div class="page__bg-row"><span>TOKEN_EXPIRED · SESSION_TIMEOUT · AUTH_REQUIRED · REDIRECT · TOKEN_EXPIRED · SESSION_TIMEOUT · AUTH_REQUIRED · REDIRECT · TOKEN_EXPIRED · SESSION_TIMEOUT · AUTH_REQUIRED · REDIRECT ·</span></div>
+    <div class="page__bg-row"><span>· SESSION_END · REFRESH_TOKEN · SIGN_IN · ACCESS_DENIED · SESSION_END · REFRESH_TOKEN · SIGN_IN · ACCESS_DENIED · SESSION_END · REFRESH_TOKEN · SIGN_IN · ACCESS_DENIED · SESSION_END ·</span></div>
+  </div>
+
+
+  <!-- SESSION EXPIRED CARD -->
+  <div class="session-card" role="main" aria-labelledby="session-title">
+
+    <!-- Terminal chrome strip -->
+    <div class="session-card__chrome" aria-hidden="true">
+      <div class="chrome-dots">
+        <div class="chrome-dot chrome-dot--red"></div>
+        <div class="chrome-dot chrome-dot--amber"></div>
+        <div class="chrome-dot chrome-dot--green"></div>
+      </div>
+      <span class="session-card__chrome-title">ascii_forge — session — expired</span>
+      <div class="chrome-status">
+        <div class="chrome-status-dot"></div>
+        <span class="chrome-status-text">token expired</span>
+      </div>
+    </div>
+
+    <!-- Card body -->
+    <div class="session-card__body">
+
+      <!-- Warning icon -->
+      <div class="session-card__icon-wrap" aria-hidden="true">
+        <svg viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Clock face -->
+          <circle cx="17" cy="17" r="12" stroke="currentColor" stroke-width="1.6"/>
+          <!-- Clock hands pointing to expiry -->
+          <path d="M17 10v7l4.5 4.5" stroke="currentColor" stroke-width="1.6"
+                stroke-linecap="round" stroke-linejoin="round"/>
+          <!-- Small X mark — expired -->
+          <path d="M7 5l4 4M11 5L7 9" stroke="currentColor" stroke-width="1.5"
+                stroke-linecap="round"/>
+        </svg>
+      </div>
+
+      <!-- Inline terminal comment -->
+      <pre class="session-card__pre" aria-hidden="true">ascii_forge.auth
+Status: ACCESS TOKEN EXPIRED
+Action: Re-authenticate</pre>
+
+      <!-- Human title -->
+      <h1 class="session-card__title" id="session-title">
+        Your session has <em>expired.</em>
+      </h1>
+
+      <!-- Supporting description -->
+      <p class="session-card__desc">
+        Your access token has timed out for security reasons.
+        Sign back in to pick up right where you left off —
+        your saved banners are still waiting for you.
+      </p>
+
+      <!-- Status chip row -->
+      <div class="session-card__token-row" aria-label="Session status">
+        <span class="token-chip token-chip--expired">
+          <span class="token-chip__dot" aria-hidden="true"></span>
+          token expired
+        </span>
+        <span class="token-chip token-chip--session">
+          <span class="token-chip__dot" aria-hidden="true"></span>
+          session ended
+        </span>
+        <span class="token-chip token-chip--action">
+          <span class="token-chip__dot" aria-hidden="true"></span>
+          Sign in to continue
+        </span>
+      </div>
+
+      <!-- CTA — the only action on this page -->
+      <a class="session-card__cta" href={{.LoginPageRoute}}>
+        Sign back in
+        <span class="cta__arrow" aria-hidden="true">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.6"
+                  stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+      </a>
+
+    </div><!-- /.session-card__body -->
+
+    <!-- Footer note -->
+    <div class="session-card__footer">
+      Sessions expire after inactivity for your security
+    </div>
+
+  </div><!-- /.session-card -->
+
+</main>
+{{end}}

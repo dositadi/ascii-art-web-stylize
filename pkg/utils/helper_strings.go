@@ -55,6 +55,7 @@ const (
 const (
 	LOGIN_ROUTE                 = "/auth/login"
 	SIGNUP_ROUTE                = "/auth/register"
+	SESSION_EXPIRED_ROUTE       = "/auth/session-expired"
 	WELCOME_ROUTE               = "/"
 	HOME_ROUTE                  = "/home"
 	ASCII_ROUTE                 = "/home/ascii-art"

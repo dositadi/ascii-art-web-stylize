@@ -18,7 +18,7 @@ func AuthenticateUser(next http.Handler) http.Handler {
 		jwtToken := GetToken(r)
 
 		if jwtToken == "" {
-			http.Error(w, h.UNAUTHORIZED_ERR_DETAIL, http.StatusUnauthorized)
+			http.Redirect(w, r, h.SESSION_EXPIRED_ROUTE, http.StatusSeeOther)
 			return
 		}
 
@@ -34,13 +34,13 @@ func AuthenticateUser(next http.Handler) http.Handler {
 			return []byte(secretKey), nil
 		})
 		if err != nil {
-			http.Error(w, h.UNAUTHORIZED_ERR_DETAIL, http.StatusUnauthorized)
+			http.Redirect(w, r, h.SESSION_EXPIRED_ROUTE, http.StatusSeeOther)
 			return
 		}
 
 		// Step four: Check the type of the recieved claims and also ensure that the claims is valid
 		if _, ok := token.Claims.(*m.ActiveUser); !ok && !token.Valid {
-			http.Error(w, h.UNAUTHORIZED_ERR_DETAIL, http.StatusUnauthorized)
+			http.Redirect(w, r, h.SESSION_EXPIRED_ROUTE, http.StatusSeeOther)
 			return
 		}
 
