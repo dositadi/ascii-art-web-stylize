@@ -35,7 +35,7 @@ func (s *Service) RenderAsciiArtPage(w http.ResponseWriter, r *http.Request) *m.
 	asciiPageDetails := struct {
 		UserName          string
 		NamePrefix        string
-		LogOutRoute       string
+		LogoutRoute       string
 		TextKey           string
 		BannerKey         string
 		PostRoute         string
@@ -65,6 +65,7 @@ func (s *Service) RenderAsciiArtPage(w http.ResponseWriter, r *http.Request) *m.
 		SaveOutputRoute:   h.SAVE_ASCII_ROUTE,
 		CopyOutputRoute:   h.COPY_ASCII_ROUTE,
 		DownloadTxtRoute:  h.BEGIN_DOWNLOAD_TXT,
+		LogoutRoute:       h.LOGOUT_ROUTE,
 	}
 
 	if s.GetHxRequestStatus(r) {

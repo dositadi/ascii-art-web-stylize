@@ -148,6 +148,7 @@ func (s *Service) RenderHistoryPage(w http.ResponseWriter, r *http.Request, font
 		DisplayFeedback      string
 		CopyOutputRoute      string
 		DownloadAscii        string
+		LogoutRoute          string
 	}{
 		DisableNext:          disableNext,
 		DisablePrev:          disablePrev,
@@ -170,6 +171,7 @@ func (s *Service) RenderHistoryPage(w http.ResponseWriter, r *http.Request, font
 		DisplayFeedback:      "showing " + strconv.Itoa(displayed) + " of " + strconv.Itoa(length) + " banners",
 		CopyOutputRoute:      h.COPY_ASCII_ROUTE,
 		DownloadAscii:        h.DOWNLOAD_ASCII_AS_TXT_ROUTE,
+		LogoutRoute:          h.LOGOUT_ROUTE,
 	}
 
 	if s.GetHxRequestStatus(r) {

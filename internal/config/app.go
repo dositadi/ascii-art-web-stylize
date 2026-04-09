@@ -48,6 +48,7 @@ func (a *App) InitializeRoutes() {
 	a.Router.HandleFunc("POST "+h.SIGNUP_ROUTE, handler.RegisterHandler)
 	a.Router.HandleFunc("GET "+h.SIGNUP_ROUTE, handler.RegisterPageHandler)
 	a.Router.HandleFunc("GET "+h.SESSION_EXPIRED_ROUTE, handler.SessionExpiredHandler)
+	a.Router.Handle("GET "+h.LOGOUT_ROUTE, mid.AuthenticateUser(http.HandlerFunc(handler.LogoutHandler)))
 
 	// Pages route
 	a.Router.Handle("GET "+h.HOME_ROUTE, mid.AuthenticateUser(http.HandlerFunc(handler.HomePageHandler)))
